@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 import { Dialog, Portal, Button } from 'react-native-paper';
 import React from 'react';
 
@@ -8,7 +8,7 @@ export interface DialogCamOnProps {
   onConfirm: () => void;
 }
 
-const _DialogThongBao = ({ visible, onDismiss, onConfirm }: DialogCamOnProps): JSX.Element => {
+export default function DialogThongBao ({ visible, onDismiss, onConfirm }: DialogCamOnProps): JSX.Element {
 
     return (
         <Portal>
@@ -57,5 +57,3 @@ const styles = StyleSheet.create({
         width: '40%'
     },
 });
-
-export const DialogThongBao = React.memo(_DialogThongBao);

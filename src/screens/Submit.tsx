@@ -2,16 +2,16 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { IconButton, Text } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
-import { StackNavigationProp } from '@react-navigation/stack';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigator/RootNavigator'
 
-type TestScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Trang 2'>;
+type SubmitScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Trang 3'>;
 
-export default function TestComponent() {
-  const navigation = useNavigation<TestScreenNavigationProp>();
+export default function SubmitComponent() {
+  const navigation = useNavigation<SubmitScreenNavigationProp>();
 
-  const goToPreviousPage = () => navigation.navigate('Trang 1');
-  const goToNextPage = () => navigation.navigate('Trang 3');
+  const goToPreviousPage = () => navigation.navigate('Trang 2');
+  const goToNextPage = () => navigation.navigate('Trang 4');
   const goHome = () => navigation.navigate('Trang 1');
 
   return (
@@ -20,14 +20,14 @@ export default function TestComponent() {
         <IconButton icon="arrow-left" size={24} onPress={goHome} />
         <View style={styles.pageIndicator}>
           <IconButton icon="chevron-left" size={24} onPress={goToPreviousPage} />
-          <Text>Trang 2/6</Text>
+          <Text>Trang 3/6</Text>
           <IconButton icon="chevron-right" size={24} onPress={goToNextPage} />
         </View>
         <IconButton icon="home" size={24} onPress={goHome} />
       </View>
       
       <View style={styles.content}>
-        <Text>Test Component</Text>
+        <Text>Submit Component</Text>
       </View>
     </View>
   );

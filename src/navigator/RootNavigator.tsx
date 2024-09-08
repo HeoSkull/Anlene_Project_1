@@ -1,11 +1,11 @@
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
-import WelcomeComponent from '../Components/WelcomeComponent';
-import TestComponent from '../Components/TestComponent';
-import SubmitComponent from '../Components/SubmitComponent';
-import PageFourComponent from '../Components/PageFourComponent';
-import PageFiveComponent from '../Components/PageFiveComponent';
-import PageSixComponent from '../Components/PageSixComponent';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import WelcomeComponent from '../screens/Welcome';
+import TestComponent from '../screens/Test';
+import SubmitComponent from '../screens/Submit';
+import PageFourComponent from '../screens/PageFour';
+import PageFiveComponent from '../screens/PageFive';
+import PageSixComponent from '../screens/PageSix';
 
 export type RootStackParamList = {
   'Trang 1': undefined;
@@ -16,7 +16,7 @@ export type RootStackParamList = {
   'Trang 6': undefined;
 };
 
-const Stack = createStackNavigator<RootStackParamList>();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
   return (

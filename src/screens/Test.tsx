@@ -2,16 +2,16 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { IconButton, Text } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
-import { StackNavigationProp } from '@react-navigation/stack';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigator/RootNavigator'
 
-type PageFiveScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Trang 5'>;
+type TestScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Trang 2'>;
 
-export default function PageFiveComponent() {
-  const navigation = useNavigation<PageFiveScreenNavigationProp>();
+export default function TestComponent() {
+  const navigation = useNavigation<TestScreenNavigationProp>();
 
-  const goToPreviousPage = () => navigation.navigate('Trang 4');
-  const goToNextPage = () => navigation.navigate('Trang 6');
+  const goToPreviousPage = () => navigation.navigate('Trang 1');
+  const goToNextPage = () => navigation.navigate('Trang 3');
   const goHome = () => navigation.navigate('Trang 1');
 
   return (
@@ -20,14 +20,14 @@ export default function PageFiveComponent() {
         <IconButton icon="arrow-left" size={24} onPress={goHome} />
         <View style={styles.pageIndicator}>
           <IconButton icon="chevron-left" size={24} onPress={goToPreviousPage} />
-          <Text>Trang 5/6</Text>
+          <Text>Trang 2/6</Text>
           <IconButton icon="chevron-right" size={24} onPress={goToNextPage} />
         </View>
         <IconButton icon="home" size={24} onPress={goHome} />
       </View>
       
       <View style={styles.content}>
-        <Text>Page Five Component</Text>
+        <Text>Test Component</Text>
       </View>
     </View>
   );

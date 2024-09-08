@@ -1,20 +1,14 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 import { Dialog, Portal, Button } from 'react-native-paper';
 import React from 'react';
 
 export interface DialogCamOnProps {
   visible: boolean;
   onDismiss: () => void;
+  onContinue: () => void;
 }
 
-const _DialogCamOn = ({ visible, onDismiss }: DialogCamOnProps): JSX.Element => {
-    const handleCancel = () => {
-        onDismiss();
-    };
-
-    const handleContinue = () => {
-        onDismiss();
-    };
+export default function DialogCamOn({ visible, onDismiss, onContinue }: DialogCamOnProps): JSX.Element {
 
     return (
         <Portal>
@@ -28,10 +22,10 @@ const _DialogCamOn = ({ visible, onDismiss }: DialogCamOnProps): JSX.Element => 
                     </Text>
                 </Dialog.Content>
                 <Dialog.Actions style={styles.actions}>
-                <Button mode="outlined" onPress={handleCancel} style={styles.cancelButton}>
+                <Button mode="outlined" onPress={onDismiss} style={styles.cancelButton}>
                     HỦY
                 </Button>
-                <Button mode="contained" onPress={handleContinue} style={styles.continueButton}>
+                <Button mode="contained" onPress={onContinue} style={styles.continueButton}>
                     TIẾP TỤC
                 </Button>
                 </Dialog.Actions>
@@ -64,5 +58,3 @@ const styles = StyleSheet.create({
         width: '40%'
     },
 });
-
-export const DialogCamOn = React.memo(_DialogCamOn);

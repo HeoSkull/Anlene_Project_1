@@ -2,10 +2,10 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { IconButton, Text } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
-import { StackNavigationProp } from '@react-navigation/stack';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigator/RootNavigator'
 
-type PageSixScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Trang 6'>;
+type PageSixScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Trang 6'>;
 
 export default function PageSixComponent() {
   const navigation = useNavigation<PageSixScreenNavigationProp>();

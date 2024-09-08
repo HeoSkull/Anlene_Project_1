@@ -1,0 +1,72 @@
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+import MaskedView from '@react-native-masked-view/masked-view';
+
+type TitleProps = {
+    text: string;
+    fontSize?: number;
+    color?: string;
+    gradientColors?: string[];
+};
+
+export default function Title({ text, fontSize = 24, color, gradientColors }: TitleProps) {
+    const titleStyle = [styles.title, { fontSize }];
+    // Render single color text 
+    if (color) {
+        
+        return (
+            <View style={styles.container}>
+                <Text 
+                    style={[titleStyle, { color }]} 
+                    numberOfLines={3} 
+                    adjustsFontSizeToFit
+                >
+                    {text}
+                </Text>
+            </View>
+        );
+    }
+
+    // Render gradient text
+    return (
+        <View style={styles.container}>
+            <MaskedView
+                style={styles.maskedView}
+                maskElement={
+                    <Text style={titleStyle} numberOfLines={3} adjustsFontSizeToFit>
+                        {text}
+                    </Text>
+                }
+            >
+                <LinearGradient
+                    colors={gradientColors || ['#BA872C', '#E8E276', '#E1D770', '#885021']}
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 1, y: 0 }}
+                    style={{ flex: 1 }}
+                >
+                    <Text style={[titleStyle, styles.invisibleText]} numberOfLines={3} adjustsFontSizeToFit>
+                        {text}
+                    </Text>
+                </LinearGradient>
+            </MaskedView>
+        </View>
+    );
+}
+
+const styles = StyleSheet.create({
+    container: {
+        padding: 10,
+    },
+    maskedView: {
+        height: 80
+    },
+    title: {
+        fontWeight: 'bold',
+        fontFamily: 'SVN_Gotham_Regular',
+        textAlign: 'center',
+    },
+    invisibleText: {
+        opacity: 0,
+    },
+});
