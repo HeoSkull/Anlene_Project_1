@@ -2,13 +2,13 @@ import { StyleSheet, Text } from 'react-native';
 import { Dialog, Portal, Button } from 'react-native-paper';
 import React from 'react';
 
-export interface DialogCamOnProps {
+type DialogCamOnProps = {
   visible: boolean;
   onDismiss: () => void;
   onContinue: () => void;
 }
 
-export default function DialogCamOn({ visible, onDismiss, onContinue }: DialogCamOnProps): JSX.Element {
+export default function DialogCamOn({ visible = false, onDismiss, onContinue }: DialogCamOnProps) {
 
     return (
         <Portal>

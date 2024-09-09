@@ -4,10 +4,10 @@ import { LinearGradient } from 'expo-linear-gradient';
 import MaskedView from '@react-native-masked-view/masked-view';
 
 type TitleProps = {
-    text: string;
-    fontSize?: number;
-    color?: string;
-    gradientColors?: string[];
+    text: string,
+    fontSize?: number,
+    color?: string,
+    gradientColors?: string[]
 };
 
 export default function Title({ text, fontSize = 24, color, gradientColors }: TitleProps) {
@@ -59,12 +59,14 @@ const styles = StyleSheet.create({
         padding: 10,
     },
     maskedView: {
-        height: 80
+        flexDirection: 'row',
+        marginVertical: 5,
     },
     title: {
         fontWeight: 'bold',
-        fontFamily: 'SVN_Gotham_Regular',
+        fontFamily: 'SVN-Gotham Regular',
         textAlign: 'center',
+        lineHeight:30
     },
     invisibleText: {
         opacity: 0,

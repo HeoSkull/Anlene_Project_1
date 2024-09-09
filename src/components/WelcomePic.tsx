@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     text: {
         color: '#478449',
         fontSize: 13,
-        fontFamily: 'SVN_Gotham_Regular',
+        fontFamily: 'SVN-Gotham Regular',
         textAlign: 'center',
         fontWeight: 'bold'
     }

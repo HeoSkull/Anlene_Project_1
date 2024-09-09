@@ -2,13 +2,13 @@ import { StyleSheet, Text } from 'react-native';
 import { Dialog, Portal, Button } from 'react-native-paper';
 import React from 'react';
 
-export interface DialogCamOnProps {
-  visible: boolean;
-  onDismiss: () => void;
-  onConfirm: () => void;
+type DialogCamOnProps = {
+    visible: boolean,
+    onDismiss: () => void,
+    onConfirm: () => void,
 }
 
-export default function DialogThongBao ({ visible, onDismiss, onConfirm }: DialogCamOnProps): JSX.Element {
+export default function DialogThongBao ({visible,onDismiss, onConfirm }: DialogCamOnProps) {
 
     return (
         <Portal>

@@ -3,8 +3,9 @@ import { View, StyleSheet } from 'react-native';
 import { IconButton, Text } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../navigator/RootNavigator'
+import { RootStackParamList } from '../../navigator/RootNavigator';
 
+import PageIndicator from '../../components/PageIndicator';
 type SubmitScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Trang 3'>;
 
 export default function SubmitComponent() {
@@ -16,16 +17,13 @@ export default function SubmitComponent() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <IconButton icon="arrow-left" size={24} onPress={goHome} />
-        <View style={styles.pageIndicator}>
-          <IconButton icon="chevron-left" size={24} onPress={goToPreviousPage} />
-          <Text>Trang 3/6</Text>
-          <IconButton icon="chevron-right" size={24} onPress={goToNextPage} />
-        </View>
-        <IconButton icon="home" size={24} onPress={goHome} />
-      </View>
-      
+      <PageIndicator 
+        text='Trang 3/6'
+        onHomeArrowPress={goHome}
+        onPreviousPagePress={goToPreviousPage}
+        onNextPagePress={goToNextPage}
+        onHomeButtonPress={goHome}
+      />
       <View style={styles.content}>
         <Text>Submit Component</Text>
       </View>

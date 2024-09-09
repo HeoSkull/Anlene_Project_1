@@ -2,11 +2,12 @@ import { StyleSheet, Text } from "react-native"
 
 type TextProps = {
     text?: string,
+    fontSize?: number,
 }
 
-export default function SmallTextNote({text}:TextProps) {
+export default function SmallTextNote({text, fontSize}:TextProps) {
     return (
-        <Text style={[styles.text]}>{text}</Text>
+        <Text style={[styles.text, {fontSize}]}>{text}</Text>
     )
 }
 const styles = StyleSheet.create({
@@ -14,7 +15,7 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 10,
         fontWeight: 400,
-        fontFamily: 'SVN_Gotham_Regular',
+        fontFamily: 'SVN-Gotham Regular',
         fontStyle: 'italic',
         textAlign: 'center'
     }

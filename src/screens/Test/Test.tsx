@@ -3,7 +3,10 @@ import { View, StyleSheet } from 'react-native';
 import { IconButton, Text } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../navigator/RootNavigator'
+import { RootStackParamList } from '../../navigator/RootNavigator'
+
+import GradientBackground from '../../components/GradientBackground';
+import PageIndicator from '../../components/PageIndicator';
 
 type TestScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Trang 2'>;
 
@@ -15,21 +18,20 @@ export default function TestComponent() {
   const goHome = () => navigation.navigate('Trang 1');
 
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <IconButton icon="arrow-left" size={24} onPress={goHome} />
-        <View style={styles.pageIndicator}>
-          <IconButton icon="chevron-left" size={24} onPress={goToPreviousPage} />
-          <Text>Trang 2/6</Text>
-          <IconButton icon="chevron-right" size={24} onPress={goToNextPage} />
+    <GradientBackground gradientColors={['#0E470E', '#20680D', '#2E820D', '#13500E']}>
+      <View style={styles.container}>
+        <PageIndicator 
+          text='Trang 2/6'
+          onHomeArrowPress={goHome}
+          onPreviousPagePress={goToPreviousPage}
+          onNextPagePress={goToNextPage}
+          onHomeButtonPress={goHome}
+        />
+        <View style={styles.content}>
+          <Text>Test Component</Text>
         </View>
-        <IconButton icon="home" size={24} onPress={goHome} />
       </View>
-      
-      <View style={styles.content}>
-        <Text>Test Component</Text>
-      </View>
-    </View>
+    </GradientBackground>
   );
 }
 
@@ -50,7 +52,6 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },

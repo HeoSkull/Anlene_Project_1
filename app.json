@@ -11,24 +11,6 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "fonts": [
-      {
-        "asset": "assets/fonts/SVN-Gotham_Regular.otf",
-        "family": "SVN_Gotham_Regular"
-      },
-      {
-        "asset": "assets/fonts/SVN-Gotham_Light.otf",
-        "family": "SVN_Gotham_Light"
-      },
-      {
-        "asset": "assets/fonts/SVN-Gotham_Thin.otf",
-        "family": "SVN_Gotham_Thin"
-      },
-      {
-        "asset": "assets/fonts/SVN-Gotham_Black.otf",
-        "family": "SVN_Gotham_Medium"
-      }
-    ],
     "ios": {
       "supportsTablet": true
     },

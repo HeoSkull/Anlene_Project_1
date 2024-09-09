@@ -29,8 +29,7 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         justifyContent: 'center',
         alignItems: 'center',
-        marginVertical: 10,
-        marginHorizontal: 10
+        marginVertical: 5,
     },
     text: {
         fontWeight: 'bold',

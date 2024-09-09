@@ -4,12 +4,12 @@ import { IconButton, Text } from 'react-native-paper';
 import { LinearGradient } from 'expo-linear-gradient';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
-import { RootStackParamList } from '../navigator/RootNavigator';
+import { RootStackParamList } from '../..//navigator/RootNavigator';
 
-import WelcomePic from '../components/WelcomePic';
-import ButtonClick from '../components/ButtonClick';
-import SmallTextNote from '../components/SmallTextNote';
-import Title from '../components/Title';
+import WelcomePic from '../../components/WelcomePic';
+import ButtonClick from '../../components/ButtonClick';
+import SmallTextNote from '../../components/SmallTextNote';
+import Title from '../../components/Title';
 type WelcomeScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Trang 1'>;
 
 export default function WelcomeComponent() {
@@ -20,7 +20,7 @@ export default function WelcomeComponent() {
 
   return (
     <View style={styles.container}>
-      <ImageBackground source={require('../../assets/page1.png')} style={styles.backgroundImage}>
+      <ImageBackground source={require('../../../assets/page1.png')} style={styles.backgroundImage}>
       {/*Top Content */}
       <View style={styles.header}>
         <LinearGradient
@@ -39,7 +39,7 @@ export default function WelcomeComponent() {
               <IconButton icon="chevron-right" size={24} iconColor='white' onPress={goToNextPage} />
             </View>
             <TouchableOpacity onPress={goHome}>
-              <Image source={require('../../assets/logo.png')} style={styles.logo}/>
+              <Image source={require('../../../assets/logo.png')} style={styles.logo}/>
             </TouchableOpacity>
           </View>
           {/*End Page Indicator*/}
@@ -54,7 +54,7 @@ export default function WelcomeComponent() {
           <View style={{ paddingHorizontal: 20}}>
             <Text style={styles.text}>Trăm công nghìn việc dịp cận Tết mà cơ thể nhức mỏi, làm sao chu toàn?</Text>
             <Text style={styles.text}>Ngay lúc này, hãy 
-              <Text style={{ color: '#E1D770', fontWeight:'bold' }}> Kiểm tra Sức khoẻ Cơ-Xương-Khớp </Text> 
+              <Text style={{ color: '#E1D770', fontWeight:'700' }}> Kiểm tra Sức khoẻ Cơ-Xương-Khớp </Text> 
               cùng Anlene để Tết này cả nhà vui khoẻ đón Tết, {'\n'} trọn vẹn niềm vui.
             </Text>
           </View>
@@ -82,11 +82,11 @@ export default function WelcomeComponent() {
           style={styles.footerGradient}>
 
             <View style={styles.welcomepic}>
-              <WelcomePic text={`MIỄN \n PHÍ`} image = {require('../../assets/mienphi.png')}/>
+              <WelcomePic text={`MIỄN \n PHÍ`} image = {require('../../../assets/mienphi.png')}/>
               <View style={{padding: 10}}/>
               <WelcomePic text={`CHỈ \n5 PHÚT`}/>
               <View style={{padding: 10}}/>
-              <WelcomePic text={`VOUCHER \n100K`} image = {require('../../assets/voucher.png')}/>
+              <WelcomePic text={`VOUCHER \n100K`} image = {require('../../../assets/voucher.png')}/>
             </View>
 
             <SmallTextNote text={"Bài kiểm tra Cơ, Xương, Khớp này được phát triển bởi đội ngũ Anlene"}/>
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    fontFamily: 'SVN_Gotham_Regular'
+    fontFamily: 'SVN-Gotham Black'
   },
   header: {
     width: '100%',
@@ -161,6 +161,7 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 14,
     textAlign: 'center',
+    fontWeight: '500'
   },
   footer: {
     width: '100%',
@@ -179,7 +180,7 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     position: 'absolute',
-    bottom: 15,
+    bottom: 25,
     left: 0,
     right: 0,
     alignItems: 'center',
