@@ -5,24 +5,24 @@ type TextInputProps = {
     label: string;
     placeholder?: string;
     value: string;
-    textOnChange: (value: string) => void;
-    isObligatory?: boolean;
+    mustFill?: boolean;
+    textOnChange: (text: string) => void;
 }
 
-export default function TextInputLabel({ label, placeholder, value, textOnChange, isObligatory }: TextInputProps) {
+export default function TextInputLabel({ label, placeholder ='', value, mustFill = false, textOnChange }: TextInputProps) {
     return (
         <View style={styles.container}>
-            <Text style={styles.label}>{label}:{isObligatory ? <Text style={{ ...styles.label, color: '#ECD24A' }}>*</Text> : null}</Text>
+            <Text style={styles.label}>{label}:{mustFill ? <Text style={{ ...styles.label, color: '#ECD24A' }}>*</Text> : null}</Text>
             <TextInput
                 style={[
                     styles.input,
-                    value === '' && isObligatory ? styles.inputError : null
+                    value === '' && mustFill ? styles.inputError : null
                 ]} placeholder={placeholder}
                 value={value}
                 onChangeText={textOnChange}
             />
 
-            {value === '' && isObligatory
+            {value === '' && mustFill
                 ? <Text style={styles.textError}>
                     Vui lòng {placeholder?.toLowerCase()}
                     </Text>

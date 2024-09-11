@@ -53,13 +53,7 @@ const styles = StyleSheet.create({
     flex: 1,
     fontFamily: 'SVN-Gotham Black'
   },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: 10,
-    marginTop: 30,
-  },
+  
   pageIndicator: {
     flexDirection: 'row',
     alignItems: 'center',

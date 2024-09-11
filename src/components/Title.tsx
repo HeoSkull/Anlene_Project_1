@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontFamily: 'SVN-Gotham Regular',
         textAlign: 'center',
-        lineHeight:30
+        lineHeight: 30
     },
     invisibleText: {
         opacity: 0,

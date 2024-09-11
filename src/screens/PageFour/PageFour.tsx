@@ -1,12 +1,13 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import { IconButton, Text } from 'react-native-paper';
+import { View, StyleSheet,Image,Text } from 'react-native';
+import { } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../navigator/RootNavigator';
 
 import PageIndicator from '../../components/PageIndicator';
-
+import Title from '../../components/Title';
+import GradientBackground from '../../components/GradientBackground';
 type PageFourScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Trang 4'>;
 
 export default function PageFourComponent() {
@@ -17,40 +18,36 @@ export default function PageFourComponent() {
   const goHome = () => navigation.navigate('Trang 1');
 
   return (
-    <View style={styles.container}>
-      <PageIndicator 
-        text='Trang 4/6'
-        onHomeArrowPress={goHome}
-        onPreviousPagePress={goToPreviousPage}
-        onNextPagePress={goToNextPage}
-        onHomeButtonPress={goHome}
-      />
-      <View style={styles.content}>
-        <Text>Page Four Component</Text>
+    <GradientBackground color='#969696'>
+      <View style={styles.container}>
+        <PageIndicator 
+          text='Trang 4/6'
+          onHomeArrowPress={goHome}
+          onPreviousPagePress={goToPreviousPage}
+          onNextPagePress={goToNextPage}
+          onHomeButtonPress={goHome}
+        />
+        <Image source={require('../../../assets/logo.png')} style={styles.logo}/>  
+        <Title text="HÃY CẨN THẬN"/>
       </View>
-    </View>
+    </GradientBackground>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
-    padding: 10,
-    marginTop: 30,
+    // justifyContent: 'center',
   },
   pageIndicator: {
     flexDirection: 'row',
     alignItems: 'center',
   },
-  content: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+  logo: {
+    width: 98,
+    height: 26,
+    resizeMode: 'contain',
+    alignSelf: 'center'
+  }, 
 });

@@ -9,7 +9,7 @@ type ButtonProps = {
     onClick?: ()=> void
 }
 
-export default function ButtonClick({text, color='white', borderColor='', fontSize = 20, backgroundColor = '#B70002',disable = false, onClick}:ButtonProps) {
+export default function ButtonClick({text, color='white', borderColor='#B70002', fontSize = 20, backgroundColor = '#B70002',disable = false, onClick}:ButtonProps) {
     return (
         <TouchableOpacity 
             style={[styles.button, {borderColor, backgroundColor}]}
