@@ -6,7 +6,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../..//navigator/RootNavigator';
 
-import WelcomePic from '../../components/WelcomePic';
+import WelcomePic from './component/WelcomePic';
 import ButtonClick from '../../components/ButtonClick';
 import SmallTextNote from '../../components/SmallTextNote';
 import Title from '../../components/Title';
@@ -89,9 +89,9 @@ export default function WelcomeComponent() {
               <WelcomePic text={`VOUCHER \n100K`} image = {require('../../../assets/voucher.png')}/>
             </View>
 
-            <SmallTextNote text={"Bài kiểm tra Cơ, Xương, Khớp này được phát triển bởi đội ngũ Anlene"}/>
+            <SmallTextNote text={"Bài kiểm tra Cơ, Xương, Khớp này được phát triển bởi đội ngũ Anlene"} fontSize={10}/>
             <View style={{paddingVertical: 20}}> 
-              <SmallTextNote text={"Lưu ý: Bài kiểm tra không dành cho đối tượng đang bị chấn\n thương hoặc có bệnh lý về cơ, xương, khớp hoặc tiểu đường"}/>
+              <SmallTextNote text={"Lưu ý: Bài kiểm tra không dành cho đối tượng đang bị chấn\n thương hoặc có bệnh lý về cơ, xương, khớp hoặc tiểu đường"} fontSize={10}/>
             </View>
         </LinearGradient>
       </View>

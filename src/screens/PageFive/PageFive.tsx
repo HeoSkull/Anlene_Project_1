@@ -6,7 +6,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../..//navigator/RootNavigator';
 
-import WelcomePic from '../../components/WelcomePic';
+import WelcomePic from '../Welcome/component/WelcomePic';
 import ButtonClick from '../../components/ButtonClick';
 import SmallTextNote from '../../components/SmallTextNote';
 import Title from '../../components/Title';

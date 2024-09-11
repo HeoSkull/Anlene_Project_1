@@ -13,7 +13,6 @@ export default function SmallTextNote({text, fontSize}:TextProps) {
 const styles = StyleSheet.create({
     text: {
         color: 'white',
-        fontSize: 10,
         fontWeight: 400,
         fontFamily: 'SVN-Gotham Regular',
         fontStyle: 'italic',

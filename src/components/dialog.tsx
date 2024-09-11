@@ -3,29 +3,32 @@ import { Dialog, Portal, Button } from 'react-native-paper';
 import React from 'react';
 
 type DialogCamOnProps = {
-    visible: boolean,
-    onDismiss: () => void,
-    onConfirm: () => void,
+  visible: boolean,
+  title?: string,
+  text?: string,
+  textYes?: string,
+  textNo?: string,
+  onDismiss: () => void,
+  onContinue: () => void,
 }
 
-export default function DialogThongBao ({visible,onDismiss, onConfirm }: DialogCamOnProps) {
+export default function Dialogg({ visible = false, onDismiss, onContinue, text, title, textNo, textYes }: DialogCamOnProps) {
 
     return (
         <Portal>
             <Dialog visible={visible} onDismiss={onDismiss}>
-                <Dialog.Title style={styles.title}>THÔNG BÁO</Dialog.Title>
+                <Dialog.Title style={styles.title}>{title}</Dialog.Title>
                 <Dialog.Content>
                     <Text style={styles.message}>
-                        Bạn có muốn hủy bỏ kết quả{'\n'}
-                        kiểm tra sức khỏe trước đó không?{'\n'}
+                        {text}
                     </Text>
                 </Dialog.Content>
                 <Dialog.Actions style={styles.actions}>
                 <Button mode="outlined" onPress={onDismiss} style={styles.cancelButton}>
-                    HỦY
+                    {textNo}
                 </Button>
-                <Button mode="contained" onPress={onConfirm} style={styles.continueButton}>
-                    ĐỒNG Ý
+                <Button mode="contained" onPress={onContinue} style={styles.continueButton}>
+                    {textYes}
                 </Button>
                 </Dialog.Actions>
             </Dialog>
