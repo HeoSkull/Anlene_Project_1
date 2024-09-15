@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { collection, getDocs } from 'firebase/firestore';
-import { db } from '../../../db';
+import { db } from '../../db/db';
 
 export const fetchResultDataAfterTest = createAsyncThunk(
     'steps/fetchResultDataAfterTest',
