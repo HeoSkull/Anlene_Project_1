@@ -1,22 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, StyleSheet, ImageBackground, Image, TouchableOpacity } from 'react-native';
 import { IconButton, Text } from 'react-native-paper';
 import { LinearGradient } from 'expo-linear-gradient';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
-import { RootStackParamList } from '../..//navigator/RootNavigator';
+import { useDispatch } from 'react-redux';
 
+import { RootStackParamList } from '../..//navigator/RootNavigator';
 import WelcomePic from './component/WelcomePic';
 import ButtonClick from '../../components/ButtonClick';
 import SmallTextNote from '../../components/SmallTextNote';
 import Title from '../../components/Title';
+import { MapDispatch } from '../../redux/store';
+import { resetSteps } from '../../redux/slices/stepSlice';
+import { resetUser } from '../../redux/slices/userSlice';
 type WelcomeScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Trang 1'>;
 
 export default function WelcomeComponent() {
   const navigation = useNavigation<WelcomeScreenNavigationProp>();
-  
-  const goToNextPage = () => navigation.navigate('Trang 2');
-  const goHome = () => navigation.navigate('Trang 1');
+  const dispatch = useDispatch<MapDispatch>();
 
   return (
     <View style={styles.container}>
@@ -34,11 +36,11 @@ export default function WelcomeComponent() {
           <View style={styles.headerContent}>
             <View style={styles.placeholder} />
             <View style={styles.centerContent}>
-              <IconButton icon="chevron-left" size={24} iconColor='white' onPress={goHome} />
+              <IconButton icon="chevron-left" size={24} iconColor='white'  />
               <Text style={styles.pageIndicator}>Trang 1/6</Text>
-              <IconButton icon="chevron-right" size={24} iconColor='white' onPress={goToNextPage} />
+              <IconButton icon="chevron-right" size={24} iconColor='white'  />
             </View>
-            <TouchableOpacity onPress={goHome}>
+            <TouchableOpacity onPress={()=> navigation.navigate('Trang 1')}>
               <Image source={require('../../../assets/logo.png')} style={styles.logo}/>
             </TouchableOpacity>
           </View>
@@ -68,7 +70,7 @@ export default function WelcomeComponent() {
           text='KIỂM TRA NGAY'
           fontSize={20}
           borderColor='#E1D770'
-          onClick={()=>navigation.navigate('Trang 2')}
+          onClick={async () => { dispatch(resetSteps()), dispatch(resetUser()), navigation.navigate('Trang 2') }}
           />
       </View>
       </ImageBackground>

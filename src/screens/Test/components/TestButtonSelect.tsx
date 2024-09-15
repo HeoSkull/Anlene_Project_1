@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Image, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { Image, Text, TouchableOpacity, StyleSheet } from 'react-native';
 type TestButtonSelectProps = {
     img?: number,
     text?: string,

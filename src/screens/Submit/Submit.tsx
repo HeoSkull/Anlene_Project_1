@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../navigator/RootNavigator';
 import CheckBox from 'expo-checkbox';
+import { useDispatch } from 'react-redux';
 
 import Title from '../../components/Title';
 import PageIndicator from '../../components/PageIndicator';
@@ -13,10 +14,14 @@ import TextInputLabel from '../../components/TextInput';
 import SmallTextNote from '../../components/SmallTextNote';
 import ButtonClick from '../../components/ButtonClick';
 import Dialogg from '../../components/dialog';
+import { MapDispatch } from '../../redux/store';
+import { resetSteps } from '../../redux/slices/stepSlice';
+import { resetUser } from '../../redux/slices/userSlice';
 type SubmitScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Trang 3'>;
 
 export default function SubmitComponent() {
   const navigation = useNavigation<SubmitScreenNavigationProp>();
+  const dispatch = useDispatch<MapDispatch>();
   const [checked, setChecked] = useState(false);
   const [dialoggVisible, setDialoggVisible] = useState(false);
   const [name, setName] = useState('');
@@ -26,12 +31,14 @@ export default function SubmitComponent() {
     setDialoggVisible(false);
   }
   const onContinue = () => {
-    navigation.navigate('Trang 4');
+    dispatch(resetSteps()), 
+    dispatch(resetUser()),
+    navigation.navigate('Trang 2');
     setDialoggVisible(false);
   }
   const goToPreviousPage = () => navigation.navigate('Trang 2');
-  const goToNextPage = () => navigation.navigate('Trang 4');
   const goHome = () => navigation.navigate('Trang 1');
+  const goNextPage = () => navigation.navigate('Trang 4')
   const handleSubmit = () => {
     setDialoggVisible(true);
   }
@@ -39,10 +46,10 @@ export default function SubmitComponent() {
     <GradientBackground color='#969696'>
       <View style={styles.container}>
         <PageIndicator 
-          text='Trang 3/6'
-          onHomeArrowPress={goHome}
+          page='3'
+          onHomeArrowPress={handleSubmit}
           onPreviousPagePress={goToPreviousPage}
-          onNextPagePress={goToNextPage}
+          onNextPagePress={goNextPage}
           onHomeButtonPress={goHome}
         />
         <ScrollView>
@@ -70,7 +77,7 @@ export default function SubmitComponent() {
             <View style={{padding: 10}}></View>
             <SmallTextNote text='Bằng cách điền bảng thông tin này, tôi đồng ý với việc thông tin của mình để xử lý dựa trên chính sách bảo mật của Anlene' fontSize={11}/>
             <View style={styles.buttonContainer}>
-              <ButtonClick text='Hoàn thành' onClick={handleSubmit} />
+              <ButtonClick text='Hoàn thành' onClick={goNextPage} />
             </View>
           </View>
         </ScrollView>

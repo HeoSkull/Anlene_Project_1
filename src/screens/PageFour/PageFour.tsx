@@ -17,7 +17,6 @@ export default function PageFourComponent() {
   const [ShowAdditionalText, setShowAdditionalText] = useState(false);
 
   const goToPreviousPage = () => navigation.navigate('Trang 3');
-  const goToNextPage = () => navigation.navigate('Trang 5');
   const goHome = () => navigation.navigate('Trang 1');
   const handlePress = () => {
     setShowAdditionalText(true);
@@ -29,11 +28,10 @@ export default function PageFourComponent() {
     <GradientBackground gradientColors={['#FD9500', '#FEBF00',"#FEBF00", '#FB8402' ]}>
       <View style={styles.container}>
         <PageIndicator 
-          text='Trang 4/6'
+          page='4'
           onHomeArrowPress={goHome}
           onPreviousPagePress={goToPreviousPage}
-          onNextPagePress={goToNextPage}
-          onHomeButtonPress={goToNextPage}
+          onHomeButtonPress={goHome}
         />
         <ScrollView>
           <Image source={require('../../../assets/logo.png')} style={styles.logo}/>  

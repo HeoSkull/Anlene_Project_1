@@ -14,7 +14,6 @@ export default function Title({ text, fontSize = 24, color, gradientColors }: Ti
     const titleStyle = [styles.title, { fontSize }];
     // Render single color text 
     if (color) {
-        
         return (
             <View style={styles.container}>
                 <Text 
@@ -34,7 +33,7 @@ export default function Title({ text, fontSize = 24, color, gradientColors }: Ti
             <MaskedView
                 style={styles.maskedView}
                 maskElement={
-                    <Text style={titleStyle} numberOfLines={3} adjustsFontSizeToFit>
+                    <Text style={titleStyle} adjustsFontSizeToFit>
                         {text}
                     </Text>
                 }
@@ -45,7 +44,7 @@ export default function Title({ text, fontSize = 24, color, gradientColors }: Ti
                     end={{ x: 1, y: 0 }}
                     style={{ flex: 1 }}
                 >
-                    <Text style={[titleStyle, styles.invisibleText]} numberOfLines={3} adjustsFontSizeToFit>
+                    <Text style={[titleStyle, styles.invisibleText]} adjustsFontSizeToFit>
                         {text}
                     </Text>
                 </LinearGradient>
@@ -64,7 +63,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontWeight: 'bold',
-        fontFamily: 'SVN-Gotham Regular',
+        // fontFamily: 'SVN-Gotham Regular',
         textAlign: 'center',
         lineHeight: 30
     },

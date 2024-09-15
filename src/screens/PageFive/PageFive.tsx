@@ -6,7 +6,6 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../..//navigator/RootNavigator';
 
-import WelcomePic from '../Welcome/component/WelcomePic';
 import ButtonClick from '../../components/ButtonClick';
 import SmallTextNote from '../../components/SmallTextNote';
 import Title from '../../components/Title';
@@ -17,7 +16,6 @@ type WelcomeScreenNavigationProp = NativeStackNavigationProp<RootStackParamList,
 export default function WelcomeComponent() {
   const navigation = useNavigation<WelcomeScreenNavigationProp>();
   
-  const goToNextPage = () => navigation.navigate('Trang 6');
   const goToPreviousPage = () => navigation.navigate('Trang 4');
   const goHome = () => navigation.navigate('Trang 1');
 
@@ -34,10 +32,9 @@ export default function WelcomeComponent() {
             style={styles.headerGradient}
           >
             <PageIndicator 
-              text='Trang 5/6'
+              page='5'
               onHomeArrowPress={goHome}
               onPreviousPagePress={goToPreviousPage}
-              onNextPagePress={goToNextPage}
               onHomeButtonPress={goHome}
             />
             <Image source={require('../../../assets/logo.png')} style={styles.logo}/>          
@@ -71,7 +68,7 @@ export default function WelcomeComponent() {
           end={{ x: 0, y: 0 }}
           style={styles.footerGradient}>
             <ButtonClick text='MUA NGAY' color='white' borderColor='#B70002' fontSize={20}/>
-            <ButtonClick text='Tìm hiểu ngay' color='#73A442' borderColor='#73A442' backgroundColor='white' fontSize={16}/>
+            <ButtonClick text='Tìm hiểu ngay' color='#73A442' borderColor='#73A442' backgroundColor='white' fontSize={16} onClick={()=> navigation.navigate('Trang 6')}/>
             <SmallTextNote text={"* Voucher chỉ áp dụng cho đơn hàng mua các sản phẩm Anlene Gold 3X,\nAnlene Gold 5X tại gian hàng Fonterra Official Retail Store trên Lazada"}fontSize={9}/>
             <View style={{paddingTop: 10}}> 
               <SmallTextNote text={"* Voucher chỉ áp dụng cho đơn hàng có giá trị từ 200.000đ"}fontSize={9}/>

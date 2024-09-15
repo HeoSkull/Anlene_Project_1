@@ -22,7 +22,7 @@ export default function PageSixComponent() {
       <View style={styles.container}>
         {/*Page indicator */}
         <PageIndicator 
-            text='Trang 6/6'
+            page='6'
             onHomeArrowPress={goHome}
             onPreviousPagePress={goToPreviousPage}
             onNextPagePress={goToNextPage}
