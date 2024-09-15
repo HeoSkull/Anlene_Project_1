@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
-import { db } from "../../db/db";
+import { db } from "../../../db/db";
 import { StoreState } from "../store";
 
 export interface UserState {
