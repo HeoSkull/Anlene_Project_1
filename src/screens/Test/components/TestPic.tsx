@@ -52,7 +52,7 @@ export default function TestPic ({title, img, isVideo = true, textImg, textNo, t
 
                 <ProgressBar />
 
-                <Title text={title} fontSize={18} />
+                <Title text={title} fontSize={18} color={'#E8E276'}/>
 
                 <View style={[styles.viewImage,
                 steps[currentStep] === true && styles.viewImageClickYes,
