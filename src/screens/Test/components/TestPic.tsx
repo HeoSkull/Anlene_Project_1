@@ -61,15 +61,14 @@ export default function TestPic ({title, img, isVideo = true, textImg, textNo, t
                         <Video
                             source={{ uri: img }}
                             rate={1.0}
-                            volume={1.0}
-                            isMuted={false}
+                            isMuted={true}
                             shouldPlay={true} 
                             isLooping={true} 
                             resizeMode={ResizeMode.COVER}
-                            style={styles.imgTest}
+                            style={styles.img}
                         />
                     ) : (
-                        <Image source={{ uri: img }} style={styles.imgTest} />
+                        <Image source={{ uri: img }} style={styles.img} />
                     )}
 
                     {steps[currentStep] === true && (
@@ -177,7 +176,7 @@ const styles = StyleSheet.create({
         borderRadius: 15
     },
 
-    imgTest: {
+    img: {
         width: '100%',
         height: '100%',
         borderRadius: 12

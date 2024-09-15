@@ -31,7 +31,6 @@ export const StepProvider: React.FC<StepProviderProps> = ({ children }) => {
 
     // // kiểm tra kết quả bài test khi đã chọn hết các bước kiểm tra
     useEffect(() => {
-        console.log("Checking result...");
         console.log("Current step:", currentStep);
         console.log("Steps:", steps);
         const checkResult = async () => {
