@@ -1,9 +1,9 @@
-import React, { ReactNode, useContext, useEffect, useState } from 'react';
+import React, { ReactNode, useContext, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavigationProp, useNavigation } from '@react-navigation/native';
-import { compareStepsWithFirebase, goBackStep, goNextStep, updateStep } from '../../../redux/slices/stepSlice';
+import {  goBackStep, goNextStep, resetSteps, updateStep } from '../../../redux/slices/stepSlice';
 import { fetchResultDataAfterTest, fetchSteps } from '../../../redux/actions/stepAction';
 import { StoreState, MapDispatch } from '../../../redux/store';
+import { resetUser } from '../../../redux/slices/userSlice';
 
 interface StepProviderProps {
     children: ReactNode;
@@ -13,7 +13,7 @@ export const StepContext = React.createContext<any>(null);
 
 export const StepProvider: React.FC<StepProviderProps> = ({ children }) => {
     const dispatch = useDispatch<MapDispatch>();
-    const { currentStep, steps, result } = useSelector((state: StoreState) => state.steps);
+    const { currentStep, steps } = useSelector((state: StoreState) => state.steps);
 
     // fetch dữ liệu bước kiểm tra và dữ liệu đánh giá từ firebase khi component được render lần đầu 
     useEffect(() => {
@@ -29,20 +29,6 @@ export const StepProvider: React.FC<StepProviderProps> = ({ children }) => {
         fetchData();
     }, []);
 
-    // // kiểm tra kết quả bài test khi đã chọn hết các bước kiểm tra
-    useEffect(() => {
-        console.log("Current step:", currentStep);
-        console.log("Steps:", steps);
-        const checkResult = async () => {
-            if (currentStep === steps.length - 1 && steps[currentStep] !== null) {
-                dispatch(compareStepsWithFirebase());
-            }
-        };
-
-        checkResult();
-    }, [steps, result, dispatch]);
-
-
     // dùng để chuyển sang bước tiếp theo
     const handleNextStep = (value: boolean) => {
         dispatch(updateStep({ index: currentStep, value }));
@@ -55,10 +41,19 @@ export const StepProvider: React.FC<StepProviderProps> = ({ children }) => {
             console.log("End of steps. Submitting or showing the result.");
         }
     };
+    
+    const handleBackStep = (value: boolean) => {
+        dispatch(updateStep({ index: currentStep, value }));
 
+        if (currentStep > 0 ) {
+            dispatch(resetSteps())
+            dispatch(resetUser())
+            dispatch(goBackStep());
+        } else console.log('Arealdy at first step');
+    }
 
     return (
-        <StepContext.Provider value={{ handleNextStep }}>
+        <StepContext.Provider value={{ handleNextStep, handleBackStep }}>
             {children}
         </StepContext.Provider>
     );

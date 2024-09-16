@@ -38,15 +38,9 @@ const stepSlice = createSlice({
             state.steps = Array(state.stepData.length).fill(null);
             state.result = '';
         },
-        compareStepsWithFirebase(state) {
-            for (const assessment of state.assessmentData) {
-                if (JSON.stringify(state.steps) === JSON.stringify(assessment.steps)) {
-                    state.result = assessment.result;
-                    return;
-                }
-            }
-            state.result = "No matching result";
-        }
+        questionSelect(state, action) {
+            state.currentStep = action.payload;
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -61,5 +55,5 @@ const stepSlice = createSlice({
     }
 });
 
-export const { goBackStep, goNextStep, resetSteps, updateStep, compareStepsWithFirebase } = stepSlice.actions;
+export const { goBackStep, goNextStep, resetSteps, updateStep } = stepSlice.actions;
 export default stepSlice.reducer;

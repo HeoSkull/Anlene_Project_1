@@ -2,7 +2,6 @@ import React,{ useState } from "react";
 import {ScrollView, View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import {ResizeMode, Video} from 'expo-av';
 import { useSelector } from "react-redux";
-import { LinearGradient } from "expo-linear-gradient";
 import { Icon } from "react-native-paper";
 
 import { resetUser } from "../../../redux/slices/userSlice";
@@ -13,6 +12,7 @@ import Title from "../../../components/Title";
 import SmallTextNote from "../../../components/SmallTextNote";
 import ButtonClick from "../../../components/ButtonClick";
 import Dialogg from "../../../components/dialog";
+import PageIndicator from "../../../components/PageIndicator";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 
 type TestPicProps = {
@@ -52,7 +52,7 @@ export default function TestPic ({title, img, isVideo = true, textImg, textNo, t
 
                 <ProgressBar />
 
-                <Title text={title} fontSize={18} color={'#E8E276'}/>
+                <Title text={title} fontSize={18} color="yellow"/>
 
                 <View style={[styles.viewImage,
                 steps[currentStep] === true && styles.viewImageClickYes,
@@ -140,7 +140,8 @@ export default function TestPic ({title, img, isVideo = true, textImg, textNo, t
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center'
+        alignItems: 'center',
+        width:'100%'
     },
 
     scrollViewContent: {
@@ -186,7 +187,6 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: -15,
         right: -15,
-        backgroundColor: '#fff',
         borderRadius: 50,
         elevation: 15,
     },
@@ -205,7 +205,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         width: '100%',
         marginVertical: 5,
-        marginBottom: 10
+        marginBottom: 10,
+        justifyContent: 'center'
     },
 
     button: {
