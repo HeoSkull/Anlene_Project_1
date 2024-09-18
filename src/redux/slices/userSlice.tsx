@@ -6,7 +6,7 @@ const initialState: UserState = {
     fullName: '',
     phone: '',
     email: '',
-    checked: false
+    isChecked: false
 };
 
 const userSlice = createSlice({
@@ -17,7 +17,7 @@ const userSlice = createSlice({
             state.fullName = '';
             state.phone = '';
             state.email = '';
-            state.checked = false;
+            state.isChecked = false;
         }
     },
     extraReducers: (builder) => {
@@ -31,11 +31,10 @@ const userSlice = createSlice({
                 state.fullName = action.payload.fullName;
                 state.phone = action.payload.phone;
                 state.email = action.payload.email;
-                state.checked = action.payload.checked;
+                state.isChecked = action.payload.isChecked;
                 console.log('Thêm người dùng thành công');
             })
             .addCase(addUser.rejected, (state, action) => {
-                // Xử lý lỗi ở đây
                 console.error('Thêm người dùng thất bại:', action.error.message);
             });
     },

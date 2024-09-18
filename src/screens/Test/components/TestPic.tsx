@@ -5,14 +5,13 @@ import { useSelector } from "react-redux";
 import { Icon } from "react-native-paper";
 
 import { resetUser } from "../../../redux/slices/userSlice";
-import { useSteps } from "../hook/StepProvider";
+import { useSteps } from "../hook/Steps";
 import { StoreState } from "../../../redux/store";
 import ProgressBar from "./ProgressBar";
 import Title from "../../../components/Title";
 import SmallTextNote from "../../../components/SmallTextNote";
 import ButtonClick from "../../../components/ButtonClick";
 import Dialogg from "../../../components/dialog";
-import PageIndicator from "../../../components/PageIndicator";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 
 type TestPicProps = {

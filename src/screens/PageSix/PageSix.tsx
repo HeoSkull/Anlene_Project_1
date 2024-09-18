@@ -10,7 +10,7 @@ import Title from '../../components/Title';
 import PageIndicator from '../../components/PageIndicator';
 type PageSixScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Trang 6'>;
 
-export default function PageSixComponent() {
+export default function PageSix() {
   const navigation = useNavigation<PageSixScreenNavigationProp>();
 
   const goToPreviousPage = () => navigation.navigate('Trang 5');

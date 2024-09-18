@@ -7,12 +7,14 @@ type TextInputProps = {
     value: string;
     mustFill?: boolean;
     textOnChange: (text: string) => void;
+    result?: string | null,
 }
 
-export default function TextInputLabel({ label, placeholder ='', value, mustFill = false, textOnChange }: TextInputProps) {
+export default function TextInputLabel({ label, placeholder ='', value, mustFill = false, textOnChange, result }: TextInputProps) {
+    const colorResult = result === 'normal' ? "#187B33" : '#ECD24A'
     return (
         <View style={styles.container}>
-            <Text style={styles.label}>{label}:{mustFill ? <Text style={{ ...styles.label, color: '#ECD24A' }}>*</Text> : null}</Text>
+            <Text style={styles.label}>{label}:{mustFill ? <Text style={{ ...styles.label, color: colorResult }}>*</Text> : null}</Text>
             <TextInput
                 style={[
                     styles.input,
@@ -23,7 +25,7 @@ export default function TextInputLabel({ label, placeholder ='', value, mustFill
             />
 
             {value === '' && mustFill
-                ? <Text style={styles.textError}>
+                ? <Text style={{...styles.textError, color: colorResult}}>
                     Vui lòng {placeholder?.toLowerCase()}
                     </Text>
                 : null}

@@ -4,7 +4,8 @@ import { Provider as PaperProvider } from 'react-native-paper';
 import RootNavigator from './src/navigator/RootNavigator';
 import { Provider } from 'react-redux';
 import { store } from './src/redux/store';
-import { StepProvider } from './src/screens/Test/hook/StepProvider';
+import { StepProvider } from './src/screens/Test/hook/Steps';
+import { UserProvider } from './src/screens/Submit/hook/users';
 
 function App() {
   return (
@@ -12,7 +13,9 @@ function App() {
       <PaperProvider>
         <NavigationContainer>
           <StepProvider>
-            <RootNavigator />
+            <UserProvider>
+              <RootNavigator />
+            </UserProvider>
           </StepProvider>
         </NavigationContainer>
       </PaperProvider>

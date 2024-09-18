@@ -7,15 +7,14 @@ export interface UserState {
     fullName: string;
     phone: string;
     email: string;
-    checked: boolean;
+    isChecked: boolean;
 }
 
-// Async action để thêm người dùng vào Firebase
 export const addUser = createAsyncThunk(
     'users/addUser',
     async (user: UserState, { getState }) => {
         const state = getState() as StoreState;
-        const { steps, result } = state.steps; // Truy cập vào steps và result từ StepSlice
+        const { steps, result } = state.steps;
 
         // Thêm người dùng vào Firestore
         await addDoc(collection(db, 'users'), {
@@ -24,10 +23,8 @@ export const addUser = createAsyncThunk(
             email: user.email,
             resultStep: steps,
             result: result,
-            checked: user.checked
+            isChecked: user.isChecked
         });
-
-        // Trả về dữ liệu người dùng để sử dụng trong fulfilled case
         return user;
     }
 );

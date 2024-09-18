@@ -1,11 +1,12 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import WelcomeComponent from '../screens/Welcome/Welcome';
-import TestComponent from '../screens/Test/Test';
-import SubmitComponent from '../screens/Submit/Submit';
-import PageFourComponent from '../screens/PageFour/PageFour';
-import PageFiveComponent from '../screens/PageFive/PageFive';
-import PageSixComponent from '../screens/PageSix/PageSix';
+import Welcome from '../screens/Welcome/Welcome';
+import Test from '../screens/Test/Test';
+import Submit from '../screens/Submit/Submit';
+import Submit1 from '../screens/Submit/Submit1';
+import PageFour from '../screens/PageFour/PageFour';
+import PageFive from '../screens/PageFive/PageFive';
+import PageSix from '../screens/PageSix/PageSix';
 
 export type RootStackParamList = {
   'Trang 1': undefined;
@@ -25,12 +26,12 @@ function RootNavigator() {
         headerShown: false // Hide the default header
       }}
     >
-      <Stack.Screen name="Trang 1" component={WelcomeComponent} />
-      <Stack.Screen name="Trang 2" component={TestComponent} />
-      <Stack.Screen name="Trang 3" component={SubmitComponent} />
-      <Stack.Screen name="Trang 4" component={PageFourComponent} />
-      <Stack.Screen name="Trang 5" component={PageFiveComponent} />
-      <Stack.Screen name="Trang 6" component={PageSixComponent} />
+      <Stack.Screen name="Trang 1" component={Welcome} />
+      <Stack.Screen name="Trang 2" component={Test} />
+      <Stack.Screen name="Trang 3" component={Submit1} />
+      <Stack.Screen name="Trang 4" component={PageFour} />
+      <Stack.Screen name="Trang 5" component={PageFive} />
+      <Stack.Screen name="Trang 6" component={PageSix} />
     </Stack.Navigator>
   );
 }

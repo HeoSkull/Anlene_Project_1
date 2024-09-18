@@ -8,7 +8,7 @@ type GradientBackgroundProps = {
     children?: React.ReactNode
 };
 
-export default function GradientBackground({ color, gradientColors, children }: GradientBackgroundProps) {
+export default function GradientBackground({ color, gradientColors, children}: GradientBackgroundProps) {
     // Render solid color background
     if (color) {
         return (
@@ -24,7 +24,7 @@ export default function GradientBackground({ color, gradientColors, children }: 
             colors={gradientColors || ['#0E470E', '#20680D', '#2E820D', '#13500E']}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 1 }}
-            locations={[0, 0.2, 0.7, 1]}
+            locations={ [0, 0.2, 0.7, 1]}
             style={styles.container}
         >
             {children}

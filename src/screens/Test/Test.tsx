@@ -9,17 +9,16 @@ import { StoreState } from '../../redux/store';
 import GradientBackground from '../../components/GradientBackground';
 import PageIndicator from '../../components/PageIndicator';
 import TestPic from './components/TestPic';
-import { useSteps } from './hook/StepProvider';
 type TestScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Trang 2'>;
 
-export default function TestComponent() {
+export default function Test() {
   const navigation = useNavigation<TestScreenNavigationProp>();
 
   const goHome = () => navigation.navigate('Trang 1');
   
+  const flatListRef = useRef<FlatList>(null);
   const { currentStep, stepData } = useSelector((state: StoreState) => state.steps);
   
-  const flatListRef = useRef<FlatList>(null);
   useEffect(() => {
     if (flatListRef.current && currentStep >= 0 && currentStep < stepData.length) {
       flatListRef.current.scrollToIndex({ index: currentStep, animated: true });
@@ -34,26 +33,21 @@ export default function TestComponent() {
     index,
   });
 
-  const {handleBackStep} = useSteps();
   const onClickBackStep = () => {
-    handleBackStep(true);
-    if (currentStep === 0) {
-      navigation.navigate('Trang 1')
-    }
+    navigation.navigate('Trang 1')
   }
   return (
     <GradientBackground gradientColors={['#0E470E', '#20680D', '#2E820D', '#13500E']}>
       <View style={{flex: 1}}>
         <PageIndicator 
           page='  2'
-          onHomeArrowPress={goHome}
+          onHomeArrowPress={onClickBackStep}
           onPreviousPagePress={onClickBackStep}
           onHomeButtonPress={goHome}
         />
         <FlatList 
           ref={flatListRef}
           data={stepData}
-          key={currentStep}
           renderItem={({item}) => (
             <View style={{width: screenWidth}}>
               <TestPic 

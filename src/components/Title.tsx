@@ -7,11 +7,12 @@ type TitleProps = {
     text: string,
     fontSize?: number,
     color?: string,
-    gradientColors?: string[]
+    gradientColors?: string[],
 };
 
 export default function Title({ text, fontSize = 24, color, gradientColors =['#BA872C', '#E8E276', '#E1D770', '#885021']}: TitleProps) {
     const titleStyle = [styles.title, { fontSize }];
+
     // Render single color text 
     if (color) {
         return (
@@ -39,7 +40,7 @@ export default function Title({ text, fontSize = 24, color, gradientColors =['#B
                 }
             >
                 <LinearGradient
-                    colors={gradientColors}
+                    colors={gradientColors || ['#BA872C', '#E8E276', '#E1D770', '#885021']}
                     start={{ x: 0, y: 0 }}
                     end={{ x: 1, y: 0 }}
                     style={{ flex: 1 }}

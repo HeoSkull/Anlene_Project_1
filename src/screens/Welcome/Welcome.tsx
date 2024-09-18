@@ -16,7 +16,7 @@ import { resetSteps } from '../../redux/slices/stepSlice';
 import { resetUser } from '../../redux/slices/userSlice';
 type WelcomeScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Trang 1'>;
 
-export default function WelcomeComponent() {
+export default function Welcome() {
   const navigation = useNavigation<WelcomeScreenNavigationProp>();
   const dispatch = useDispatch<MapDispatch>();
 

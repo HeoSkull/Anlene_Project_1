@@ -13,7 +13,7 @@ import PageIndicator from '../../components/PageIndicator';
 import CardSale from './Card';
 type WelcomeScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Trang 1'>;
 
-export default function WelcomeComponent() {
+export default function PageFive() {
   const navigation = useNavigation<WelcomeScreenNavigationProp>();
   
   const goToPreviousPage = () => navigation.navigate('Trang 4');

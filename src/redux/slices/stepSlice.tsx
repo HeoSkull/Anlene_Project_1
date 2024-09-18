@@ -1,29 +1,19 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { fetchResultDataAfterTest, fetchSteps } from '../actions/stepAction'; 
-
-interface Step {
-    steps: any[];
-    currentStep: number;
-    stepData: any[];
-    assessmentData: any[];
-    result: string;
-}
-
+import { fetchDataSubmit, fetchResultDataAfterTest, fetchSteps } from '../actions/stepAction'; 
+import { Step } from '../actions/stepAction';
 const initialState: Step = {
     steps: [],
     currentStep: 0,
     stepData: [],
     assessmentData: [],
-    result: ''
+    result: '',
+    dataSubmit: [],
 };
 
 const stepSlice = createSlice({
     name: 'steps',
     initialState,
     reducers: {
-        goBackStep(state) {
-            state.currentStep = Math.max(state.currentStep - 1, 0);
-        },
         goNextStep(state) {
             state.currentStep = Math.min(state.currentStep + 1, state.steps.length - 1);
         },
@@ -41,6 +31,15 @@ const stepSlice = createSlice({
         questionSelect(state, action) {
             state.currentStep = action.payload;
         },
+        compareStep(state) {
+            for (const assessment of state.assessmentData) {
+                if (JSON.stringify(assessment.steps) === JSON.stringify(state.steps)) {
+                    state.result = assessment.result;
+                    return;
+                }
+            }
+            state.result = "No matching result";
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -51,9 +50,12 @@ const stepSlice = createSlice({
                 state.stepData = action.payload;
                 state.steps = Array(action.payload.length).fill(null);
                 console.log('steps', state.steps);
+            })
+            .addCase(fetchDataSubmit.fulfilled, (state, action: PayloadAction<any[]>) => {
+                state.dataSubmit = action.payload;
             });
     }
 });
 
-export const { goBackStep, goNextStep, resetSteps, updateStep } = stepSlice.actions;
+export const { goNextStep, resetSteps, updateStep, compareStep } = stepSlice.actions;
 export default stepSlice.reducer;
