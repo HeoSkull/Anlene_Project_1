@@ -21,40 +21,36 @@ export default function PageFour() {
   const { result, dataSubmit } = useSelector((state: StoreState) => state.steps);
   
   const matchedResult = dataSubmit.find(item => item.result === result) || { titleSubmit: '', textReview1: '', textReview: '', textReview3: '' };
-  const goodGradientBackground = ['#0E470E', '#20680D', '#2E820D', '#13500E'];
-  const normalGradientBackground = ['#FD9500', '#FEBF00',"#FEBF00", '#FB8402' ];
-  const normalLocation = [0, 0.2, 0.7, 1];
-  const badColorBackground = ["#969696"];
-
-  const goodColorTitle = ['#BA872C', '#E8E276', '#E1D770', '#885021']
-  const normalColorTitle = ["#376E48","#187B33"];
-  const badColorTitle = ["#DF1E13"];
   const img = result === "normal" 
     ? require("../../../assets/bot_anlene_xanh.png") 
     : require("../../../assets/bot_anlene_vang.png");
-  const resultColor = result === "good" ? { gradientColors: goodColorTitle } : result === "normal" ? { gradientColors: normalColorTitle } : { color: badColorTitle[0] };
+  const gradientBackgrounds = {
+    good: ['#0E470E', '#20680D', '#2E820D', '#13500E'],
+    normal: ['#FD9500', '#FEBF00', "#FEBF00", '#FB8402'],
+    bad: ["#969696"]
+  };
+  const resultColors = {
+    good: ['#BA872C', '#E8E276', '#E1D770', '#885021'],
+    normal: ["#376E48", "#187B33"],
+    bad: ["#DF1E13"]
+  };
+  const normalLocation = [0, 0.2, 0.7, 1];
+  const resultColor = result === "good" ? { gradientColors: resultColors.good } : 
+                      result === 'normal' ? { gradientColors: resultColors.normal } : 
+                      { color: resultColors.bad[0] };
+  const backgroundProps = result === 'good' ? { gradientColors: gradientBackgrounds.good } : 
+                          result === 'normal' ? { gradientColors: gradientBackgrounds.normal, location: normalLocation } : 
+                          { color: gradientBackgrounds.bad[0] };
 
-  const backgroundProps = result === 'good' ? 
-    { gradientColors: goodGradientBackground } : result === 'normal' ?  
-    { gradientColors: normalGradientBackground, location: normalLocation } : { color: badColorBackground[0] };
-
-    const XemThemColor = result === "normal" ? { color: '#376E48' } : { color: '#ECD24A' };
-  const goToPreviousPage = () => navigation.navigate('Trang 3');
-  const goHome = () => navigation.navigate('Trang 1');
-  const handlePress = () => {
-    setShowAdditionalText(true);
-  }
-  const handleSubmit = () => {
-    navigation.navigate('Trang 5');
-  }
+  const XemThemColor = result === "normal" ? { color: '#376E48' } : { color: '#ECD24A' };
   return (
     <GradientBackground {...backgroundProps}>
       <View style={styles.container}>
         <PageIndicator 
           page='4'
-          onHomeArrowPress={goHome}
-          onPreviousPagePress={goToPreviousPage}
-          onHomeButtonPress={goHome}
+          onHomeArrowPress={() => navigation.navigate('Trang 1')}
+          onPreviousPagePress={() => navigation.navigate('Trang 3')}
+          onHomeButtonPress={() => navigation.navigate('Trang 1')}
         />
         <ScrollView>
           <Image source= {require('../../../assets/logo.png')} style={styles.logo}/>  
@@ -71,7 +67,7 @@ export default function PageFour() {
           <Text style={styles.text}>{matchedResult.textReview3 }</Text>
 
           {!ShowAdditionalText ? (
-            <TouchableOpacity style={styles.button} onPress={handlePress}>
+            <TouchableOpacity style={styles.button} onPress={() => setShowAdditionalText(true)}>
               <Text style={[styles.buttonText, {...XemThemColor}]} >Xem thêm</Text>
             </TouchableOpacity>
           ) : (
@@ -81,7 +77,7 @@ export default function PageFour() {
             </Text>
           )}
           <View style={styles.buttonContainer}>
-            <ButtonClick text='Hoàn thành' onClick={handleSubmit} borderColor='#FFC200' />
+            <ButtonClick text='Hoàn thành' onClick={() => navigation.navigate('Trang 5')} borderColor='#FFC200' />
           </View>
         </ScrollView>
       </View>

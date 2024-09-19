@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     label: {
         fontSize: 14,
         color: 'white',
-        fontWeight: '400',
+        fontWeight: '500',
     },
     input: {
         height: 45,

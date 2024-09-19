@@ -3,12 +3,13 @@ import {ScrollView, View, Text, Image, StyleSheet, TouchableOpacity} from 'react
 import {ResizeMode, Video} from 'expo-av';
 import { useSelector } from "react-redux";
 import { Icon } from "react-native-paper";
+import MaskedView from "@react-native-masked-view/masked-view";
+import { LinearGradient } from "expo-linear-gradient";
 
 import { resetUser } from "../../../redux/slices/userSlice";
 import { useSteps } from "../hook/Steps";
 import { StoreState } from "../../../redux/store";
 import ProgressBar from "./ProgressBar";
-import Title from "../../../components/Title";
 import SmallTextNote from "../../../components/SmallTextNote";
 import ButtonClick from "../../../components/ButtonClick";
 import Dialogg from "../../../components/dialog";
@@ -43,8 +44,26 @@ export default function TestPic ({title, img, isVideo = true, textImg, textNo, t
 
                 <ProgressBar />
 
-                <Title text={title} fontSize={18} color="yellow"/>
-
+                <MaskedView
+                    style={styles.maskedView}
+                    maskElement={
+                        <Text style={[styles.gradientText, {opacity: 1}]} adjustsFontSizeToFit>
+                            {title}
+                        </Text>
+                    }
+                >
+                    <LinearGradient
+                        colors={['#BA872C', '#E8E276', '#E1D770', '#885021']}
+                        locations={[0, 0.23, 0.8529, 1]}
+                        start={{ x: 0, y: 0 }}
+                        end={{ x: 1, y: 0 }}
+                        style={{ flex: 1 }}
+                    >
+                        <Text style={[styles.gradientText, {opacity: 0}]} adjustsFontSizeToFit>
+                            {title}
+                        </Text>
+                        </LinearGradient>
+                </MaskedView>
                 <View style={[styles.viewImage, steps[currentStep] === true && styles.yes, steps[currentStep] === false && styles.no]}>
                     {isVideo ? (
                         <Video
@@ -220,5 +239,17 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         borderWidth: 1,
         borderColor: 'white'
+    },
+
+    maskedView: {
+        flexDirection: 'row',
+        marginVertical: 5
+    },
+    gradientText: {
+        fontWeight: 'bold',
+        // fontFamily: 'SVN-Gotham Regular',
+        textAlign: 'center',
+        lineHeight: 30,
+        fontSize: 18
     }
 });

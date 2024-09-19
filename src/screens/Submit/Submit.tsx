@@ -36,11 +36,12 @@ export default function Submit() {
     normal: ["#376E48", "#187B33"],
     bad: ["#DF1E13"]
   };
+  const normalLocation = [0, 0.2, 0.7, 1];
   const resultColor = result === "good" ? { gradientColors: resultColors.good } : 
                       result === 'normal' ? { gradientColors: resultColors.normal } : 
                       { color: resultColors.bad[0] };
   const backgroundProps = result === 'good' ? { gradientColors: gradientBackgrounds.good } : 
-                          result === 'normal' ? { gradientColors: gradientBackgrounds.normal } : 
+                          result === 'normal' ? { gradientColors: gradientBackgrounds.normal, location: normalLocation } : 
                           { color: gradientBackgrounds.bad[0] };
                       
 
