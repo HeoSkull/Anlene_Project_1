@@ -11,14 +11,14 @@ import SmallTextNote from '../../components/SmallTextNote';
 import Title from '../../components/Title';
 import PageIndicator from '../../components/PageIndicator';
 import CardSale from './Card';
-type WelcomeScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Trang 1'>;
+type PageFiveScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Trang 5'>;
 
 export default function PageFive() {
-  const navigation = useNavigation<WelcomeScreenNavigationProp>();
+  const navigation = useNavigation<PageFiveScreenNavigationProp>();
   
   const goToPreviousPage = () => navigation.navigate('Trang 4');
   const goHome = () => navigation.navigate('Trang 1');
-
+  
   return (
     <View style={styles.container}>
       <ImageBackground source={require('../../../assets/page5.png')} style={styles.backgroundImage}>

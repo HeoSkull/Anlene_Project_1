@@ -38,7 +38,7 @@ export default function PageFour() {
     { gradientColors: goodGradientBackground } : result === 'normal' ?  
     { gradientColors: normalGradientBackground, location: normalLocation } : { color: badColorBackground[0] };
 
-
+    const XemThemColor = result === "normal" ? { color: '#376E48' } : { color: '#ECD24A' };
   const goToPreviousPage = () => navigation.navigate('Trang 3');
   const goHome = () => navigation.navigate('Trang 1');
   const handlePress = () => {
@@ -72,7 +72,7 @@ export default function PageFour() {
 
           {!ShowAdditionalText ? (
             <TouchableOpacity style={styles.button} onPress={handlePress}>
-              <Text style={styles.buttonText}>Xem thêm</Text>
+              <Text style={[styles.buttonText, {...XemThemColor}]} >Xem thêm</Text>
             </TouchableOpacity>
           ) : (
             <Text style={styles.additionalText}>
@@ -119,7 +119,6 @@ const styles = StyleSheet.create({
     paddingVertical: 10
   },
   buttonText: {
-    color: "red",
     fontSize: 13,
     fontWeight: '500',
     textDecorationLine: 'underline',
@@ -134,9 +133,7 @@ const styles = StyleSheet.create({
     fontStyle: 'italic'
   },
   buttonContainer: {
-    left: 0,
-    right: 0,
     alignItems: 'center',
     paddingTop: 10
-  },
+  }
 });
