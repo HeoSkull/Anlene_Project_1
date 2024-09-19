@@ -29,29 +29,14 @@ export const UserProvider: React.FC<{children: ReactNode}> = ({ children }) => {
     const navigation = useNavigation<NavigationProp<any>>();
     const dispatch = useDispatch<MapDispatch>();
     const [full, setFull] = useState(false);
-
     const [user, setUser] = useState({
         fullName: '',
         phone: '',
         email: '',
         isChecked: false,
     });
-    
-    const resetUser = () => {
-        setUser({
-            fullName: '',
-            phone: '',
-            email: '',
-            isChecked: false,
-        });
-    };
-    
     useEffect(() => {
-        if (user.fullName && user.phone) {
-            setFull(true);
-        } else {
-            setFull(false);
-        }
+        setFull(!!(user.fullName && user.phone));
     }, [user.fullName, user.phone]);
 
     useEffect(()=> {
@@ -62,17 +47,16 @@ export const UserProvider: React.FC<{children: ReactNode}> = ({ children }) => {
         try {
             const phoneExisted = await dispatch(checkPhoneExist(user.phone)).unwrap();
             if (phoneExisted) {
-                alert('Số điện thoại đã tồn tại!');
+                alert('Số điện thoại đã được sử dụng!');
                 return;
             }
 
             await dispatch(addUser(user)).unwrap();
-            alert('Người dùng đã được thêm thành công!');
             navigation.navigate('Trang 4');
-            resetUser();
+            setUser({ fullName: '', phone: '', email: '', isChecked: false });
         } catch (error) {
-            console.error('Lỗi khi thêm người dùng:', error);
-            alert('Đã xảy ra lỗi, vui lòng thử lại.');
+            console.error('Error when adding user:', error);
+            alert('Đã xảy ra lỗi, vui lòng thử lại sau!');
         }
     };
 

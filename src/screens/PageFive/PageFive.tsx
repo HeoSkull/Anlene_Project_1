@@ -38,12 +38,7 @@ export default function PageFive() {
               onHomeButtonPress={goHome}
             />
             <Image source={require('../../../assets/logo.png')} style={styles.logo}/>          
-            <Title 
-              text={"CHĂM SÓC CƠ-XƯƠNG-KHỚP\nNHẬN LỘC SỨC KHỎE TỪ ANLENE"}
-              fontSize={20}
-              // gradientColors={['#BA872C', '#E8E276', '#E1D770', '#885021']}
-              // color= 'red'
-            />
+            <Title text={"CHĂM SÓC CƠ-XƯƠNG-KHỚP\nNHẬN LỘC SỨC KHỎE TỪ ANLENE"} fontSize={20}/>
             <View style={{ paddingHorizontal: 20}}>
               <Text style={[styles.text, {fontWeight: '500'}]}>ANLENE LÌ XÌ NGAY 100.000đ KHI ĐẶT MUA HÔM NAY!</Text>
               <Text style={styles.text}>Hạn sử dụng: 25/07/2021 - 31/07/2021 </Text>
@@ -122,10 +117,10 @@ const styles = StyleSheet.create({
   },
   cardSale: {
     position: 'absolute',
-    bottom: '32%', // Adjust this value to position the CardSale above the footer
+    bottom: '32%',
     left: 0,
     right: 0,
     alignItems: 'center',
-    zIndex: 1, // Ensure it's above the background
+    zIndex: 1, 
   }
 });

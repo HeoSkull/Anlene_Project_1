@@ -18,12 +18,9 @@ export const addUser = createAsyncThunk(
 
         // Thêm người dùng vào Firestore
         await addDoc(collection(db, 'users'), {
-            fullName: user.fullName,
-            phone: user.phone,
-            email: user.email,
+            ...user,
             resultStep: steps,
             result: result,
-            isChecked: user.isChecked
         });
         return user;
     }

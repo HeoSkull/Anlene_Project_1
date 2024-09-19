@@ -14,7 +14,6 @@ export const StepProvider: FC<StepProps> = ({ children }) => {
     const dispatch = useDispatch<MapDispatch>();
     const { currentStep, steps } = useSelector((state: StoreState) => state.steps);
 
-    // fetch dữ liệu bước kiểm tra và dữ liệu đánh giá từ firebase khi component được render lần đầu 
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -25,27 +24,20 @@ export const StepProvider: FC<StepProps> = ({ children }) => {
             }
         };
         fetchData();
-    }, []);
+    }, [dispatch]);
     
     useEffect(()=> {
-        console.log("Current step:", currentStep);
-        console.log("Steps:", steps);
-        const checkResult = async () => {
-            if (currentStep === steps.length - 1 && steps[currentStep] !== null) {
-                dispatch(compareStep());
-            }
-        };
-        checkResult();
+        if (currentStep === steps.length - 1 && steps[currentStep] !== null) {
+            dispatch(compareStep());
+        }
     },[currentStep, steps, dispatch]); 
 
-    // dùng để chuyển sang bước tiếp theo
     const handleNextStep = (value: boolean) => {
-
         dispatch(updateStep({ index: currentStep, value }));
         if (currentStep < steps.length - 1) {
             setTimeout(() => {
                 dispatch(goNextStep());
-            }, 1000);
+            }, 500);
         } else console.log("End of steps. Submitting or showing the result.");
     };
     

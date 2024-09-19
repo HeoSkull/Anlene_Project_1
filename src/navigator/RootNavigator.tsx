@@ -3,7 +3,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Welcome from '../screens/Welcome/Welcome';
 import Test from '../screens/Test/Test';
 import Submit from '../screens/Submit/Submit';
-import Submit1 from '../screens/Submit/Submit1';
 import PageFour from '../screens/PageFour/PageFour';
 import PageFive from '../screens/PageFive/PageFive';
 import PageSix from '../screens/PageSix/PageSix';
@@ -28,7 +27,7 @@ function RootNavigator() {
     >
       <Stack.Screen name="Trang 1" component={Welcome} />
       <Stack.Screen name="Trang 2" component={Test} />
-      <Stack.Screen name="Trang 3" component={Submit1} />
+      <Stack.Screen name="Trang 3" component={Submit} />
       <Stack.Screen name="Trang 4" component={PageFour} />
       <Stack.Screen name="Trang 5" component={PageFive} />
       <Stack.Screen name="Trang 6" component={PageSix} />

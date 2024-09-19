@@ -1,11 +1,18 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { fetchDataSubmit, fetchResultDataAfterTest, fetchSteps } from '../actions/stepAction'; 
-import { Step } from '../actions/stepAction';
+interface Step {
+    steps: any[];
+    currentStep: number;
+    stepData: any[];
+    resultData: any[];
+    result: string;
+    dataSubmit: any[]
+}
 const initialState: Step = {
     steps: [],
     currentStep: 0,
     stepData: [],
-    assessmentData: [],
+    resultData: [],
     result: '',
     dataSubmit: [],
 };
@@ -32,9 +39,9 @@ const stepSlice = createSlice({
             state.currentStep = action.payload;
         },
         compareStep(state) {
-            for (const assessment of state.assessmentData) {
-                if (JSON.stringify(assessment.steps) === JSON.stringify(state.steps)) {
-                    state.result = assessment.result;
+            for (const result of state.resultData) {
+                if (JSON.stringify(result.steps) === JSON.stringify(state.steps)) {
+                    state.result = result.result;
                     return;
                 }
             }
@@ -44,12 +51,11 @@ const stepSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(fetchResultDataAfterTest.fulfilled, (state, action: PayloadAction<any[]>) => {
-                state.assessmentData = action.payload;
+                state.resultData = action.payload;
             })
             .addCase(fetchSteps.fulfilled, (state, action: PayloadAction<any[]>) => {
                 state.stepData = action.payload;
                 state.steps = Array(action.payload.length).fill(null);
-                console.log('steps', state.steps);
             })
             .addCase(fetchDataSubmit.fulfilled, (state, action: PayloadAction<any[]>) => {
                 state.dataSubmit = action.payload;

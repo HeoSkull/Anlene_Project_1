@@ -31,18 +31,10 @@ export default function TestPic ({title, img, isVideo = true, textImg, textNo, t
     const { handleNextStep } = useSteps();
     const allSelected = steps.every(step => step != null)
 
-    const handleYesClick = () => {
-        handleNextStep(true);
+    const handleClick = (value: boolean) => {
+        handleNextStep(value);
         setButtonDisabled(true);
     };
-
-    const handleNoClick = () => {
-        handleNextStep(false);
-        setButtonDisabled(true);
-    };
-    const handleCloseDialog = () => {
-        setOpenDialog(false)
-    }
     return (
         <ScrollView contentContainerStyle={styles.scrollViewContent}>
 
@@ -53,9 +45,7 @@ export default function TestPic ({title, img, isVideo = true, textImg, textNo, t
 
                 <Title text={title} fontSize={18} color="yellow"/>
 
-                <View style={[styles.viewImage,
-                steps[currentStep] === true && styles.viewImageClickYes,
-                steps[currentStep] === false && styles.viewImageClickNo]}>
+                <View style={[styles.viewImage, steps[currentStep] === true && styles.yes, steps[currentStep] === false && styles.no]}>
                     {isVideo ? (
                         <Video
                             source={{ uri: img }}
@@ -69,15 +59,9 @@ export default function TestPic ({title, img, isVideo = true, textImg, textNo, t
                     ) : (
                         <Image source={{ uri: img }} style={styles.img} />
                     )}
-
-                    {steps[currentStep] === true && (
+                    {steps[currentStep] !== null && (
                         <View style={styles.iconImg}>
-                            <Icon source="check-circle" size={50} color="#73A442" />
-                        </View>
-                    )}
-                    {steps[currentStep] === false && (
-                        <View style={styles.iconImg}> 
-                            <Icon source="close-circle" size={50} color="#E23F30" />
+                            <Icon source={steps[currentStep] ? "check-circle" : "close-circle"} size={50} color={steps[currentStep] ? "#73A442" : "#E23F30"} />
                         </View>
                     )}
                 </View>
@@ -87,7 +71,7 @@ export default function TestPic ({title, img, isVideo = true, textImg, textNo, t
                 <View style={styles.containerButton}>
                     <TouchableOpacity
                         style={[styles.button, steps[currentStep] === true && styles.buttonSelected]}
-                        onPress={handleYesClick}
+                        onPress={() => handleClick(true)} 
                         disabled={isButtonDisabled}
                     >
                         <View style={styles.buttonIcon}>
@@ -98,7 +82,7 @@ export default function TestPic ({title, img, isVideo = true, textImg, textNo, t
 
                     <TouchableOpacity
                         style={[styles.button, steps[currentStep] === false && styles.buttonSelected]}
-                        onPress={handleNoClick}
+                        onPress={() => handleClick(false)} 
                         disabled={isButtonDisabled}
                     >
                         <View style={styles.buttonIcon}>
@@ -113,7 +97,7 @@ export default function TestPic ({title, img, isVideo = true, textImg, textNo, t
                     text='XÁC NHẬN'
                     borderColor={allSelected ? '#B70002' : '#B8B8B8'}
                     backgroundColor={allSelected ? '#B70002' : '#B8B8B8'}
-                    disable={allSelected ? false : true}
+                    disable={!allSelected}
                     onClick={() => setOpenDialog(true)}
                 />
 
@@ -125,7 +109,7 @@ export default function TestPic ({title, img, isVideo = true, textImg, textNo, t
                     text="Bạn đã tham gia bài kiểm tra sức khoẻ. Hãy tiếp tục để có thể nhận kết quả kiểm tra sức khoẻ của bạn."
                     textYes="TIẾP TỤC"
                     textNo="HỦY"
-                    onDismiss={handleCloseDialog}
+                    onDismiss={() => setOpenDialog(false)}
                     onContinue={() => {
                         resetUser();
                         setOpenDialog(false);
@@ -162,14 +146,14 @@ const styles = StyleSheet.create({
         height: 317,
     },
 
-    viewImageClickYes: {
+    yes: {
         borderColor: '#73A442',
         borderWidth: 3,
         elevation: 15,
         borderRadius: 15
     },
 
-    viewImageClickNo: {
+    no: {
         borderColor: '#C6463A',
         borderWidth: 3,
         elevation: 15,

@@ -14,21 +14,14 @@ export default function TextInputLabel({ label, placeholder ='', value, mustFill
     const colorResult = result === 'normal' ? "#187B33" : '#ECD24A'
     return (
         <View style={styles.container}>
-            <Text style={styles.label}>{label}:{mustFill ? <Text style={{ ...styles.label, color: colorResult }}>*</Text> : null}</Text>
+            <Text style={styles.label}>{label}:{mustFill && <Text style={{ ...styles.label, color: colorResult }}>*</Text>}</Text>
             <TextInput
-                style={[
-                    styles.input,
-                    value === '' && mustFill ? styles.inputError : null
-                ]} placeholder={placeholder}
+                style={[styles.input, value === '' && mustFill ? styles.inputError : null]} 
+                placeholder={placeholder}
                 value={value}
                 onChangeText={textOnChange}
             />
-
-            {value === '' && mustFill
-                ? <Text style={{...styles.textError, color: colorResult}}>
-                    Vui lòng {placeholder?.toLowerCase()}
-                    </Text>
-                : null}
+            {value === '' && mustFill && <Text style={{ ...styles.textError, color: colorResult }}>Vui lòng {placeholder?.toLowerCase()}</Text>}
         </View>
     )
 }
@@ -37,6 +30,7 @@ const styles = StyleSheet.create({
     container: {
         width: '100%',
         marginTop: 10,
+        paddingVertical: 5,
         justifyContent: 'center',
     },
     label: {

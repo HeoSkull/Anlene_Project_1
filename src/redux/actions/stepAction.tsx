@@ -2,14 +2,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../../db/db';
 
-export interface Step {
-    steps: any[];
-    currentStep: number;
-    stepData: any[];
-    assessmentData: any[];
-    result: string;
-    dataSubmit: any[]
-}
 export const fetchResultDataAfterTest = createAsyncThunk(
     'steps/fetchResultDataAfterTest',
     async () => {
