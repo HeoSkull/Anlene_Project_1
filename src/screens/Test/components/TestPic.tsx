@@ -2,7 +2,7 @@ import React,{ useState } from "react";
 import {ScrollView, View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import {ResizeMode, Video} from 'expo-av';
 import { useSelector } from "react-redux";
-import { Icon } from "react-native-paper";
+import { Button, Icon } from "react-native-paper";
 import MaskedView from "@react-native-masked-view/masked-view";
 import { LinearGradient } from "expo-linear-gradient";
 
@@ -27,14 +27,12 @@ type TestPicProps = {
 export default function TestPic ({title, img, isVideo = true, textImg, textNo, textYes}:TestPicProps) {
     const navigation = useNavigation<NavigationProp<any>>();
     const [ isOpenDialog, setOpenDialog ] = useState(false);
-    const [ isButtonDisabled, setButtonDisabled ] = useState(false);
     const { steps, currentStep } = useSelector((state: StoreState)=> state.steps)
     const { handleNextStep } = useSteps();
     const allSelected = steps.every(step => step != null)
 
     const handleClick = (value: boolean) => {
         handleNextStep(value);
-        setButtonDisabled(true);
     };
     return (
         <ScrollView contentContainerStyle={styles.scrollViewContent}>
@@ -43,7 +41,6 @@ export default function TestPic ({title, img, isVideo = true, textImg, textNo, t
                 <Text style={styles.title}>KIỂM TRA CƠ - XƯƠNG - KHỚP</Text>
 
                 <ProgressBar />
-
                 <MaskedView
                     style={styles.maskedView}
                     maskElement={
@@ -86,15 +83,13 @@ export default function TestPic ({title, img, isVideo = true, textImg, textNo, t
                 </View>
 
                 <Text style={styles.text}>{textImg}</Text>
-
                 <View style={styles.containerButton}>
                     <TouchableOpacity
                         style={[styles.button, steps[currentStep] === true && styles.buttonSelected]}
                         onPress={() => handleClick(true)} 
-                        disabled={isButtonDisabled}
                     >
                         <View style={styles.buttonIcon}>
-                            <Image source={require('../../../../assets/duoc.png')}/>
+                            <Image source={{uri: "https://firebasestorage.googleapis.com/v0/b/anleneproject1.appspot.com/o/duoc.png?alt=media&token=d0cb26f5-0a7c-4bcf-a372-c48576aa2b5d"}} style={styles.icon}/>
                         </View>
                         <Text style={styles.textButton}>{textYes}</Text>
                     </TouchableOpacity>
@@ -102,23 +97,22 @@ export default function TestPic ({title, img, isVideo = true, textImg, textNo, t
                     <TouchableOpacity
                         style={[styles.button, steps[currentStep] === false && styles.buttonSelected]}
                         onPress={() => handleClick(false)} 
-                        disabled={isButtonDisabled}
                     >
                         <View style={styles.buttonIcon}>
-                            <Image source={require('../../../../assets/khongduoc.png')}/>
+                            <Image source={{uri: "https://firebasestorage.googleapis.com/v0/b/anleneproject1.appspot.com/o/khongduoc.png?alt=media&token=cb42c64d-e747-4013-86a6-dfbba048641f"}} style={styles.icon}/>
                         </View>
                         <Text style={styles.textButton}>{textNo}</Text>
                     </TouchableOpacity>
-
                 </View>
 
-                <ButtonClick
-                    text='XÁC NHẬN'
-                    borderColor={allSelected ? '#B70002' : '#B8B8B8'}
-                    backgroundColor={allSelected ? '#B70002' : '#B8B8B8'}
-                    disable={!allSelected}
-                    onClick={() => setOpenDialog(true)}
-                />
+                <View style={{paddingVertical: 10}}>                
+                    <ButtonClick
+                        text='XÁC NHẬN'
+                        borderColor={allSelected ? '#B70002' : '#B8B8B8'}
+                        backgroundColor={allSelected ? '#B70002' : '#B8B8B8'}
+                        disable={!allSelected}
+                        onClick={() => setOpenDialog(true)}/>
+                </View>
 
                 <SmallTextNote text={'*Lưu ý: Hãy dừng bài tập ngay nếu cảm thấy không thoải mái.\n Đảm bảo vị trí tập an toàn để không té ngã.'} fontSize={10}/>
 
@@ -129,7 +123,7 @@ export default function TestPic ({title, img, isVideo = true, textImg, textNo, t
                     textYes="TIẾP TỤC"
                     textNo="HỦY"
                     onDismiss={() => setOpenDialog(false)}
-                    onContinue={() => {
+                    onContinue={async () => {
                         resetUser();
                         setOpenDialog(false);
                         navigation.navigate('Trang 3');
@@ -163,6 +157,12 @@ const styles = StyleSheet.create({
         marginTop:10,
         width: 330,
         height: 317,
+    },
+
+    
+    icon: {
+        width: 34,
+        height: 34
     },
 
     yes: {

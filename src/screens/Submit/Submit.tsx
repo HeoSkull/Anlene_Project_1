@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../navigator/RootNavigator';
 import CheckBox from 'expo-checkbox';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Title from '../../components/Title';
 import PageIndicator from '../../components/PageIndicator';
@@ -14,12 +14,15 @@ import SmallTextNote from '../../components/SmallTextNote';
 import ButtonClick from '../../components/ButtonClick';
 import Dialogg from '../../components/dialog';
 import { useUser } from './hook/users'; 
-import { StoreState } from '../../redux/store';
+import { MapDispatch, StoreState } from '../../redux/store';
+import { resetSteps } from '../../redux/slices/stepSlice';
+import { resetUser } from '../../redux/slices/userSlice';
 
 type SubmitScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Trang 3'>;
 
 export default function Submit() {
-  const navigation = useNavigation<SubmitScreenNavigationProp>();   
+  const navigation = useNavigation<SubmitScreenNavigationProp>();
+  const dispatch = useDispatch<MapDispatch>();  
   const { user, setUser, full, handleSubmit } = useUser()
   const { result, dataSubmit } = useSelector((state: StoreState) => state.steps);
   const [dialoggVisible, setDialoggVisible] = useState(false);
@@ -49,8 +52,10 @@ export default function Submit() {
     setDialoggVisible(false);
   }
 
-  const onContinue = () => {
-    navigation.navigate('Trang 1');
+  const onContinue = async () => {
+    dispatch(resetSteps());
+    dispatch(resetUser());
+    navigation.navigate('Trang 2');
     setDialoggVisible(false);
   }
 
@@ -69,7 +74,7 @@ export default function Submit() {
           onHomeButtonPress={goHome}
         />
         <ScrollView>
-          <Image source={require('../../../assets/logo.png')} style={styles.logo}/>  
+          <Image source={{uri: 'https://firebasestorage.googleapis.com/v0/b/anleneproject1.appspot.com/o/logo.png?alt=media&token=beb2187f-964e-44de-9b44-c51e6c892edf'}} style={styles.logo}/>  
           <Title text="HOÀN THÀNH BÀI KIỂM TRA" fontSize={13} {...resultColor} />
           <Title text={matchedResult.titleSubmit} fontSize={26} {...resultColor}/>
           <Text style={[styles.text, {textAlign:'center', paddingHorizontal: 10}]}>{matchedResult.textSubmit}</Text>

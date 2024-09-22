@@ -7,7 +7,6 @@ export const fetchResultDataAfterTest = createAsyncThunk(
     async () => {
         const querySnapshot = await getDocs(collection(db, 'result_after_test'));
         const resultData = querySnapshot.docs.map(doc => doc.data());
-        console.log('resultData: ', resultData);
         return resultData;
     }
 );
@@ -17,7 +16,6 @@ export const fetchSteps = createAsyncThunk(
     async () => {
         const querySnapshot = await getDocs(collection(db, 'steps'));
         const stepData = querySnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
-        console.log('steps: ', stepData)
         return stepData;
     }
 );

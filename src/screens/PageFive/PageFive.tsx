@@ -21,7 +21,7 @@ export default function PageFive() {
   
   return (
     <View style={styles.container}>
-      <ImageBackground source={require('../../../assets/page5.png')} style={styles.backgroundImage}>
+      <ImageBackground source={{uri: 'https://firebasestorage.googleapis.com/v0/b/anleneproject1.appspot.com/o/page5.png?alt=media&token=43d3a04d-2352-4090-804c-23899ced4c05'}} style={styles.backgroundImage}>
       {/*Top Content */}
         <View style={styles.header}>
           <LinearGradient
@@ -37,7 +37,7 @@ export default function PageFive() {
               onPreviousPagePress={goToPreviousPage}
               onHomeButtonPress={goHome}
             />
-            <Image source={require('../../../assets/logo.png')} style={styles.logo}/>          
+            <Image source={{uri: 'https://firebasestorage.googleapis.com/v0/b/anleneproject1.appspot.com/o/logo.png?alt=media&token=beb2187f-964e-44de-9b44-c51e6c892edf'}} style={styles.logo}/>          
             <Title text={"CHĂM SÓC CƠ-XƯƠNG-KHỚP\nNHẬN LỘC SỨC KHỎE TỪ ANLENE"} fontSize={20}/>
             <View style={{ paddingHorizontal: 20}}>
               <Text style={[styles.text, {fontWeight: '500'}]}>ANLENE LÌ XÌ NGAY 100.000đ KHI ĐẶT MUA HÔM NAY!</Text>

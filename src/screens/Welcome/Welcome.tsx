@@ -22,7 +22,7 @@ export default function Welcome() {
 
   return (
     <View style={styles.container}>
-      <ImageBackground source={require('../../../assets/page1.png')} style={styles.backgroundImage}>
+      <ImageBackground source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/anleneproject1.appspot.com/o/page1.png?alt=media&token=b3734ccb-bf82-4840-a079-0fcef8c10172' }} style={styles.backgroundImage}>
       {/*Top Content */}
       <View style={styles.header}>
         <LinearGradient
@@ -41,7 +41,7 @@ export default function Welcome() {
               <IconButton icon="chevron-right" size={24} iconColor='white'  />
             </View>
             <TouchableOpacity onPress={()=> navigation.navigate('Trang 1')}>
-              <Image source={require('../../../assets/logo.png')} style={styles.logo}/>
+              <Image source={{uri: 'https://firebasestorage.googleapis.com/v0/b/anleneproject1.appspot.com/o/logo.png?alt=media&token=beb2187f-964e-44de-9b44-c51e6c892edf'}} style={styles.logo}/>
             </TouchableOpacity>
           </View>
           {/*End Page Indicator*/}

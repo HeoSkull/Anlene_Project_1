@@ -53,7 +53,7 @@ export default function PageFour() {
           onHomeButtonPress={() => navigation.navigate('Trang 1')}
         />
         <ScrollView>
-          <Image source= {require('../../../assets/logo.png')} style={styles.logo}/>  
+          <Image source={{uri: 'https://firebasestorage.googleapis.com/v0/b/anleneproject1.appspot.com/o/logo.png?alt=media&token=beb2187f-964e-44de-9b44-c51e6c892edf'}} style={styles.logo}/>  
           <Title text={matchedResult.titleSubmit} fontSize={26} {...resultColor}/ >
           <Text style={styles.text}>{matchedResult.textReview1} </Text>
           
@@ -63,7 +63,7 @@ export default function PageFour() {
           <Image source={img} style={styles.image}/>
           <SmallTextNote text="*Mỗi 10 năm. Nguồn: Daly et al., 2013. BMC Geriatrics 13:71" fontSize={6.11}/>
           <SmallTextNote text="**Mỗi 5-7 năm sau khi mãn kinh. Nguồn: National Osteoporosis Foundation (2009). Hormones and Healthy Bones" fontSize={6.11}/>
-          <Title text="LỰA CHỌN GIÚP CƠ-XƯƠNG-KHỚP CHẮC KHOẺ" fontSize={17} {...resultColor} />
+          <Title text="LỰA CHỌN GIÚP CƠ-XƯƠNG-KHỚP CHẮC KHOẺ" fontSize={17} {...XemThemColor} />
           <Text style={styles.text}>{matchedResult.textReview3 }</Text>
 
           {!ShowAdditionalText ? (

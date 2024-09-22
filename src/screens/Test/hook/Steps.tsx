@@ -27,18 +27,20 @@ export const StepProvider: FC<StepProps> = ({ children }) => {
     }, [dispatch]);
     
     useEffect(()=> {
+        console.log("Current step:", currentStep);
+        console.log("Steps:", steps);
         if (currentStep === steps.length - 1 && steps[currentStep] !== null) {
             dispatch(compareStep());
         }
     },[currentStep, steps, dispatch]); 
 
-    const handleNextStep = (value: boolean) => {
+    const handleNextStep =  (value: boolean) => {
         dispatch(updateStep({ index: currentStep, value }));
         if (currentStep < steps.length - 1) {
             setTimeout(() => {
                 dispatch(goNextStep());
             }, 500);
-        } else console.log("End of steps. Submitting or showing the result.");
+        }
     };
     
 

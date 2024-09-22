@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     label: {
         fontSize: 14,
         color: 'white',
-        fontWeight: '500',
+        fontWeight: '600',
     },
     input: {
         height: 45,
@@ -52,7 +52,8 @@ const styles = StyleSheet.create({
     textError: {
         fontSize: 12, 
         color: '#ECD24A', 
-        top: 3
+        top: 3,
+        fontWeight: 500
     }
 })
 

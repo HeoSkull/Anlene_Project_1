@@ -8,8 +8,8 @@ type DialogCamOnProps = {
   text?: string,
   textYes?: string,
   textNo?: string,
-  onDismiss: () => void,
-  onContinue: () => void,
+  onDismiss?: () => void,
+  onContinue: () => Promise<void>,
 }
 
 export default function Dialogg({ visible = false, onDismiss, onContinue, text, title, textNo, textYes }: DialogCamOnProps) {
@@ -27,7 +27,7 @@ export default function Dialogg({ visible = false, onDismiss, onContinue, text, 
                 <Button mode="outlined" onPress={onDismiss} style={styles.cancelButton}>
                     {textNo}
                 </Button>
-                <Button mode="contained" onPress={onContinue} style={styles.continueButton}>
+                <Button mode="contained" onPress={async () => { await onContinue(); }} style={styles.continueButton}>
                     {textYes}
                 </Button>
                 </Dialog.Actions>

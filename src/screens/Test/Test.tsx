@@ -2,18 +2,20 @@ import React, {useEffect, useRef} from 'react';
 import { View, FlatList, Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { RootStackParamList } from '../../navigator/RootNavigator';
-import { StoreState } from '../../redux/store';
+import { MapDispatch, StoreState } from '../../redux/store';
 import GradientBackground from '../../components/GradientBackground';
 import PageIndicator from '../../components/PageIndicator';
 import TestPic from './components/TestPic';
+import { resetSteps } from '../../redux/slices/stepSlice';
 
 type TestScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Trang 2'>;
 
 export default function Test() {
   const navigation = useNavigation<TestScreenNavigationProp>();
+  const dispatch = useDispatch<MapDispatch>();
   const flatListRef = useRef<FlatList>(null);
   const { currentStep, stepData } = useSelector((state: StoreState) => state.steps);
 
@@ -31,6 +33,10 @@ export default function Test() {
   });
 
   const goHome = () => navigation.navigate('Trang 1');
+  const onContinue = async () => {
+    if (currentStep===0) navigation.navigate('Trang 1')
+    dispatch(resetSteps());
+  }
 
   return (
     <GradientBackground gradientColors={['#0E470E', '#20680D', '#2E820D', '#13500E']}>
@@ -38,7 +44,7 @@ export default function Test() {
         <PageIndicator 
           page='  2'
           onHomeArrowPress={goHome}
-          onPreviousPagePress={goHome}
+          onPreviousPagePress={onContinue}
           onHomeButtonPress={goHome}
         />
         <FlatList 

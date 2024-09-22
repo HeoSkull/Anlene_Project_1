@@ -16,7 +16,7 @@ export default function CardSale() {
                 <Text style={styles.text3}>
                     ÁP DỤNG TẠI
                 </Text>
-                <Image source={require('../../../assets/lazada.png')} />
+                <Image source={{uri: 'https://firebasestorage.googleapis.com/v0/b/anleneproject1.appspot.com/o/lazada.png?alt=media&token=a0ce6ef8-e8b3-4e62-8cdc-9e512eef3d4c'}} style={styles.img}/>
             </View>
         </View>
         );
@@ -64,4 +64,8 @@ const styles = StyleSheet.create({
     fontSize: 15.28,
     color: '#ECD24A',
   },
+  img: {
+    width: 94,
+    height: 26
+  }
 });
