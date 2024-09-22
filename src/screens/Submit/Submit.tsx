@@ -17,6 +17,7 @@ import { useUser } from './hook/users';
 import { MapDispatch, StoreState } from '../../redux/store';
 import { resetSteps } from '../../redux/slices/stepSlice';
 import { resetUser } from '../../redux/slices/userSlice';
+import { logo } from '../../../img/img';
 
 type SubmitScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Trang 3'>;
 
@@ -74,7 +75,7 @@ export default function Submit() {
           onHomeButtonPress={goHome}
         />
         <ScrollView>
-          <Image source={{uri: 'https://firebasestorage.googleapis.com/v0/b/anleneproject1.appspot.com/o/logo.png?alt=media&token=beb2187f-964e-44de-9b44-c51e6c892edf'}} style={styles.logo}/>  
+          <Image source={logo} style={styles.logo}/>  
           <Title text="HOÀN THÀNH BÀI KIỂM TRA" fontSize={13} {...resultColor} />
           <Title text={matchedResult.titleSubmit} fontSize={26} {...resultColor}/>
           <Text style={[styles.text, {textAlign:'center', paddingHorizontal: 10}]}>{matchedResult.textSubmit}</Text>

@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 import GradientBackground from "../../components/GradientBackground";
+import { khopthoaihoa, loangxuong, matco } from "../../../img/img";
 
 type data = {
     id: number,
@@ -15,21 +16,21 @@ const list: data[] = [
         id: 1,
         upperContent: "KHỐI CƠ",
         lowerContent: "MẤT ĐI",
-        image: {uri: "https://firebasestorage.googleapis.com/v0/b/anleneproject1.appspot.com/o/matCo.png?alt=media&token=f1ab6ad6-c9c2-4fb7-a7e4-f7d0ead15c62"},
+        image: matco,
         percentage: "29%",
     },
     {
         id: 2,
         upperContent: "MẬT ĐỘ XƯƠNG",
         lowerContent: "SUY GIẢM",
-        image: {uri: "https://firebasestorage.googleapis.com/v0/b/anleneproject1.appspot.com/o/loangxuong.png?alt=media&token=49ff90a6-6478-4e12-a13b-28b5274ee13a"},
+        image: loangxuong,
         percentage: "20%",
     },
     {
         id: 3,
         upperContent: "KHỚP",
         lowerContent: "THOÁI HÓA",
-        image: {uri: "https://firebasestorage.googleapis.com/v0/b/anleneproject1.appspot.com/o/khopthoaihoa.png?alt=media&token=a78a9580-062d-47ce-894d-d5e2ae77be8f"},
+        image: khopthoaihoa,
     }
 ]
 

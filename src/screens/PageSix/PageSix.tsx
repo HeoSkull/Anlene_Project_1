@@ -8,13 +8,10 @@ import { RootStackParamList } from '../../navigator/RootNavigator'
 import GradientBackground from '../../components/GradientBackground';
 import Title from '../../components/Title';
 import PageIndicator from '../../components/PageIndicator';
+import { logo, imagePage6, suaAnlene } from '../../../img/img';
 
 type PageSixScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Trang 6'>;
-const images: { [key: string]: any } = {
-  cokhoe: {uri: "https://firebasestorage.googleapis.com/v0/b/anleneproject1.appspot.com/o/cokhoe.png?alt=media&token=9b7bd099-b492-428e-8035-49fb76bc88e2"},
-  khoplinhhoat: {uri: "https://firebasestorage.googleapis.com/v0/b/anleneproject1.appspot.com/o/khoplinhhoat.png?alt=media&token=e1f00622-a9f1-4c90-9ddf-b828af9d0b8d"},
-  xuongchac: {uri: "https://firebasestorage.googleapis.com/v0/b/anleneproject1.appspot.com/o/xuongchac.png?alt=media&token=d7062557-c6af-441a-981f-1fff70c2ee76"},
-};
+
 
 export default function PageSix() {
   const navigation = useNavigation<PageSixScreenNavigationProp>();
@@ -35,10 +32,10 @@ export default function PageSix() {
         {/*Content*/}
         <ScrollView>
           <View style={styles.content}>
-            <Image source={{uri: 'https://firebasestorage.googleapis.com/v0/b/anleneproject1.appspot.com/o/logo.png?alt=media&token=beb2187f-964e-44de-9b44-c51e6c892edf'}} style={styles.logo}/>
+            <Image source={logo} style={styles.logo}/>
             <Title text={"THÔNG TIN SẢN PHẨM"} color='#ECD24A'/>
             <Title text={"SỮA ANLENE 3 KHỎE"} color='#ECD24A' fontSize={18}/>
-            <Image source={{uri: 'https://firebasestorage.googleapis.com/v0/b/anleneproject1.appspot.com/o/Anlene2.png?alt=media&token=03968ab7-8070-48e4-bd42-fd4fb8d93d33'}} style={styles.img} />
+            <Image source={suaAnlene} style={styles.img} />
             <View style={{paddingHorizontal: 10}}>
               <Text style={styles.text}>
                 Uống 2 ly Anlene mỗi ngày để bổ sung dinh dưỡng, 
@@ -46,8 +43,8 @@ export default function PageSix() {
                 thoải mái tận hưởng cuộc sống năng động, chẳng ngại “rào cản” tuổi tác.
               </Text>
             </View>
-            {Object.keys(images).map((key) => (
-              <Image key={key} source={images[key]} style={styles.img} />
+            {Object.keys(imagePage6).map((key) => (
+              <Image key={key} source={imagePage6[key]} style={styles.img} />
             ))}
           </View>
         </ScrollView>

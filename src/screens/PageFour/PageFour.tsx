@@ -12,6 +12,7 @@ import SmallTextNote from '../../components/SmallTextNote';
 import ButtonClick from '../../components/ButtonClick';
 import ThreeImages from './ThreeImages';
 import { StoreState } from '../../redux/store';
+import { botAnleneVang, botAnleneXanh, logo } from '../../../img/img';
 type PageFourScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Trang 4'>;
 
 export default function PageFour() {
@@ -22,8 +23,8 @@ export default function PageFour() {
   
   const matchedResult = dataSubmit.find(item => item.result === result) || { titleSubmit: '', textReview1: '', textReview: '', textReview3: '' };
   const img = result === "normal" 
-    ? {uri: "https://firebasestorage.googleapis.com/v0/b/anleneproject1.appspot.com/o/bot_anlene_xanh.png?alt=media&token=f1e33969-a64f-4b3a-89f7-406e724a769c"} 
-    : {uri: "https://firebasestorage.googleapis.com/v0/b/anleneproject1.appspot.com/o/bot_anlene_vang.png?alt=media&token=781f2ae8-900f-4e2b-a70c-d63b64adc303"};
+    ? botAnleneXanh 
+    : botAnleneVang;
   const gradientBackgrounds = {
     good: ['#0E470E', '#20680D', '#2E820D', '#13500E'],
     normal: ['#FD9500', '#FEBF00', "#FEBF00", '#FB8402'],
@@ -53,14 +54,16 @@ export default function PageFour() {
           onHomeButtonPress={() => navigation.navigate('Trang 1')}
         />
         <ScrollView>
-          <Image source={{uri: 'https://firebasestorage.googleapis.com/v0/b/anleneproject1.appspot.com/o/logo.png?alt=media&token=beb2187f-964e-44de-9b44-c51e6c892edf'}} style={styles.logo}/>  
+          <Image source={logo} style={styles.logo}/>  
           <Title text={matchedResult.titleSubmit} fontSize={26} {...resultColor}/ >
           <Text style={styles.text}>{matchedResult.textReview1} </Text>
           
           <ThreeImages/>
 
           <Text style={styles.text}> {matchedResult.textReview2} </Text>
+
           <Image source={img} style={styles.image}/>
+
           <SmallTextNote text="*Mỗi 10 năm. Nguồn: Daly et al., 2013. BMC Geriatrics 13:71" fontSize={6.11}/>
           <SmallTextNote text="**Mỗi 5-7 năm sau khi mãn kinh. Nguồn: National Osteoporosis Foundation (2009). Hormones and Healthy Bones" fontSize={6.11}/>
           <Title text="LỰA CHỌN GIÚP CƠ-XƯƠNG-KHỚP CHẮC KHOẺ" fontSize={17} {...XemThemColor} />
@@ -109,6 +112,8 @@ const styles = StyleSheet.create({
   },
   image: {
     alignSelf: 'center',
+    width: '60%',
+    height: '35%'
   },
   button: {
     alignItems: 'center',

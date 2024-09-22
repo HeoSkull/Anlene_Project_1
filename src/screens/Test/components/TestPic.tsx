@@ -14,6 +14,7 @@ import SmallTextNote from "../../../components/SmallTextNote";
 import ButtonClick from "../../../components/ButtonClick";
 import Dialogg from "../../../components/dialog";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
+import { duoc, khongduoc } from "../../../../img/img";
 
 type TestPicProps = {
     title: string,
@@ -89,7 +90,7 @@ export default function TestPic ({title, img, isVideo = true, textImg, textNo, t
                         onPress={() => handleClick(true)} 
                     >
                         <View style={styles.buttonIcon}>
-                            <Image source={{uri: "https://firebasestorage.googleapis.com/v0/b/anleneproject1.appspot.com/o/duoc.png?alt=media&token=d0cb26f5-0a7c-4bcf-a372-c48576aa2b5d"}} style={styles.icon}/>
+                            <Image source={duoc} style={styles.icon}/>
                         </View>
                         <Text style={styles.textButton}>{textYes}</Text>
                     </TouchableOpacity>
@@ -99,7 +100,7 @@ export default function TestPic ({title, img, isVideo = true, textImg, textNo, t
                         onPress={() => handleClick(false)} 
                     >
                         <View style={styles.buttonIcon}>
-                            <Image source={{uri: "https://firebasestorage.googleapis.com/v0/b/anleneproject1.appspot.com/o/khongduoc.png?alt=media&token=cb42c64d-e747-4013-86a6-dfbba048641f"}} style={styles.icon}/>
+                            <Image source={khongduoc} style={styles.icon}/>
                         </View>
                         <Text style={styles.textButton}>{textNo}</Text>
                     </TouchableOpacity>

@@ -14,6 +14,7 @@ import Title from '../../components/Title';
 import { MapDispatch } from '../../redux/store';
 import { resetSteps } from '../../redux/slices/stepSlice';
 import { resetUser } from '../../redux/slices/userSlice';
+import { logo, mienphi, page1, voucher } from '../../../img/img';
 type WelcomeScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Trang 1'>;
 
 export default function Welcome() {
@@ -22,7 +23,7 @@ export default function Welcome() {
 
   return (
     <View style={styles.container}>
-      <ImageBackground source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/anleneproject1.appspot.com/o/page1.png?alt=media&token=b3734ccb-bf82-4840-a079-0fcef8c10172' }} style={styles.backgroundImage}>
+      <ImageBackground source={page1} style={styles.backgroundImage}>
       {/*Top Content */}
       <View style={styles.header}>
         <LinearGradient
@@ -41,7 +42,7 @@ export default function Welcome() {
               <IconButton icon="chevron-right" size={24} iconColor='white'  />
             </View>
             <TouchableOpacity onPress={()=> navigation.navigate('Trang 1')}>
-              <Image source={{uri: 'https://firebasestorage.googleapis.com/v0/b/anleneproject1.appspot.com/o/logo.png?alt=media&token=beb2187f-964e-44de-9b44-c51e6c892edf'}} style={styles.logo}/>
+              <Image source={logo} style={styles.logo}/>
             </TouchableOpacity>
           </View>
           {/*End Page Indicator*/}
@@ -84,11 +85,11 @@ export default function Welcome() {
           style={styles.footerGradient}>
 
             <View style={styles.welcomepic}>
-              <WelcomePic text={`MIỄN \n PHÍ`} image = {{uri: 'https://firebasestorage.googleapis.com/v0/b/anleneproject1.appspot.com/o/mienphi.png?alt=media&token=99336090-804c-46bf-8f00-5a0b21ab202b'}}/>
+              <WelcomePic text={`MIỄN \n PHÍ`} image = {mienphi}/>
               <View style={{padding: 10}}/>
               <WelcomePic text={`CHỈ \n5 PHÚT`}/>
               <View style={{padding: 10}}/>
-              <WelcomePic text={`VOUCHER \n100K`} image = {{uri: 'https://firebasestorage.googleapis.com/v0/b/anleneproject1.appspot.com/o/voucher.png?alt=media&token=c42ec736-3700-4bc9-9dd9-f9f53afbd7c1'}}/>
+              <WelcomePic text={`VOUCHER \n100K`} image = {voucher}/>
             </View>
 
             <SmallTextNote text={"Bài kiểm tra Cơ, Xương, Khớp này được phát triển bởi đội ngũ Anlene"} fontSize={10}/>

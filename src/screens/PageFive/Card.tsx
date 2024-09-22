@@ -1,5 +1,6 @@
 import { View, Text, Image, StyleSheet } from "react-native";
 import React from "react";
+import { lazada } from "../../../img/img";
 
 export default function CardSale() {
     return (
@@ -16,7 +17,7 @@ export default function CardSale() {
                 <Text style={styles.text3}>
                     ÁP DỤNG TẠI
                 </Text>
-                <Image source={{uri: 'https://firebasestorage.googleapis.com/v0/b/anleneproject1.appspot.com/o/lazada.png?alt=media&token=a0ce6ef8-e8b3-4e62-8cdc-9e512eef3d4c'}} style={styles.img}/>
+                <Image source={lazada} style={styles.img}/>
             </View>
         </View>
         );
