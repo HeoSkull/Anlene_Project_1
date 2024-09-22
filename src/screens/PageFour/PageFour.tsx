@@ -22,8 +22,8 @@ export default function PageFour() {
   
   const matchedResult = dataSubmit.find(item => item.result === result) || { titleSubmit: '', textReview1: '', textReview: '', textReview3: '' };
   const img = result === "normal" 
-    ? require("../../../assets/bot_anlene_xanh.png") 
-    : require("../../../assets/bot_anlene_vang.png");
+    ? {uri: "https://firebasestorage.googleapis.com/v0/b/anleneproject1.appspot.com/o/bot_anlene_xanh.png?alt=media&token=f1e33969-a64f-4b3a-89f7-406e724a769c"} 
+    : {uri: "https://firebasestorage.googleapis.com/v0/b/anleneproject1.appspot.com/o/bot_anlene_vang.png?alt=media&token=781f2ae8-900f-4e2b-a70c-d63b64adc303"};
   const gradientBackgrounds = {
     good: ['#0E470E', '#20680D', '#2E820D', '#13500E'],
     normal: ['#FD9500', '#FEBF00', "#FEBF00", '#FB8402'],

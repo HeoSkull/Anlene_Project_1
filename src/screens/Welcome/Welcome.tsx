@@ -84,11 +84,11 @@ export default function Welcome() {
           style={styles.footerGradient}>
 
             <View style={styles.welcomepic}>
-              <WelcomePic text={`MIỄN \n PHÍ`} image = {require('../../../assets/mienphi.png')}/>
+              <WelcomePic text={`MIỄN \n PHÍ`} image = {{uri: 'https://firebasestorage.googleapis.com/v0/b/anleneproject1.appspot.com/o/mienphi.png?alt=media&token=99336090-804c-46bf-8f00-5a0b21ab202b'}}/>
               <View style={{padding: 10}}/>
               <WelcomePic text={`CHỈ \n5 PHÚT`}/>
               <View style={{padding: 10}}/>
-              <WelcomePic text={`VOUCHER \n100K`} image = {require('../../../assets/voucher.png')}/>
+              <WelcomePic text={`VOUCHER \n100K`} image = {{uri: 'https://firebasestorage.googleapis.com/v0/b/anleneproject1.appspot.com/o/voucher.png?alt=media&token=c42ec736-3700-4bc9-9dd9-f9f53afbd7c1'}}/>
             </View>
 
             <SmallTextNote text={"Bài kiểm tra Cơ, Xương, Khớp này được phát triển bởi đội ngũ Anlene"} fontSize={10}/>
